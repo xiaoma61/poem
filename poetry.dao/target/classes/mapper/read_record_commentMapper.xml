@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.poetry.dao.ReadRecordCommentMapper">
+  <resultMap id="BaseResultMap" type="com.poetry.pojo.Do.read_record_commentDo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="comment_content" jdbcType="VARCHAR" property="commentContent" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="ueser_id" jdbcType="INTEGER" property="ueserId" />
+    <result column="read_record_id" jdbcType="INTEGER" property="readRecordId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, comment_content, time, ueser_id, read_record_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from read_record_comment
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from read_record_comment
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.poetry.pojo.Do.read_record_commentDo">
+    insert into read_record_comment (id, comment_content, time, 
+      ueser_id, read_record_id)
+    values (#{id,jdbcType=INTEGER}, #{commentContent,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}, 
+      #{ueserId,jdbcType=INTEGER}, #{readRecordId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.poetry.pojo.Do.read_record_commentDo">
+    insert into read_record_comment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="commentContent != null">
+        comment_content,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+      <if test="ueserId != null">
+        ueser_id,
+      </if>
+      <if test="readRecordId != null">
+        read_record_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="commentContent != null">
+        #{commentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ueserId != null">
+        #{ueserId,jdbcType=INTEGER},
+      </if>
+      <if test="readRecordId != null">
+        #{readRecordId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.poetry.pojo.Do.read_record_commentDo">
+    update read_record_comment
+    <set>
+      <if test="commentContent != null">
+        comment_content = #{commentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ueserId != null">
+        ueser_id = #{ueserId,jdbcType=INTEGER},
+      </if>
+      <if test="readRecordId != null">
+        read_record_id = #{readRecordId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.poetry.pojo.Do.read_record_commentDo">
+    update read_record_comment
+    set comment_content = #{commentContent,jdbcType=VARCHAR},
+      time = #{time,jdbcType=TIMESTAMP},
+      ueser_id = #{ueserId,jdbcType=INTEGER},
+      read_record_id = #{readRecordId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.poetry.dao.PoemMapper">
+  <resultMap id="BaseResultMap" type="com.poetry.pojo.Do.poemDo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="dynasty" jdbcType="VARCHAR" property="dynasty" />
+    <result column="author" jdbcType="VARCHAR" property="author" />
+    <result column="poem_content" jdbcType="VARCHAR" property="poemContent" />
+    <result column="poem_appreciation" jdbcType="VARCHAR" property="poemAppreciation" />
+    <result column="poem_translation" jdbcType="VARCHAR" property="poemTranslation" />
+    <result column="poemcol" jdbcType="VARCHAR" property="poemcol" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, dynasty, author, poem_content, poem_appreciation, poem_translation, poemcol
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from poem
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from poem
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.poetry.pojo.Do.poemDo">
+    insert into poem (id, dynasty, author, 
+      poem_content, poem_appreciation, poem_translation, 
+      poemcol)
+    values (#{id,jdbcType=INTEGER}, #{dynasty,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR}, 
+      #{poemContent,jdbcType=VARCHAR}, #{poemAppreciation,jdbcType=VARCHAR}, #{poemTranslation,jdbcType=VARCHAR}, 
+      #{poemcol,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.poetry.pojo.Do.poemDo">
+    insert into poem
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="dynasty != null">
+        dynasty,
+      </if>
+      <if test="author != null">
+        author,
+      </if>
+      <if test="poemContent != null">
+        poem_content,
+      </if>
+      <if test="poemAppreciation != null">
+        poem_appreciation,
+      </if>
+      <if test="poemTranslation != null">
+        poem_translation,
+      </if>
+      <if test="poemcol != null">
+        poemcol,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="dynasty != null">
+        #{dynasty,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null">
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="poemContent != null">
+        #{poemContent,jdbcType=VARCHAR},
+      </if>
+      <if test="poemAppreciation != null">
+        #{poemAppreciation,jdbcType=VARCHAR},
+      </if>
+      <if test="poemTranslation != null">
+        #{poemTranslation,jdbcType=VARCHAR},
+      </if>
+      <if test="poemcol != null">
+        #{poemcol,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.poetry.pojo.Do.poemDo">
+    update poem
+    <set>
+      <if test="dynasty != null">
+        dynasty = #{dynasty,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null">
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="poemContent != null">
+        poem_content = #{poemContent,jdbcType=VARCHAR},
+      </if>
+      <if test="poemAppreciation != null">
+        poem_appreciation = #{poemAppreciation,jdbcType=VARCHAR},
+      </if>
+      <if test="poemTranslation != null">
+        poem_translation = #{poemTranslation,jdbcType=VARCHAR},
+      </if>
+      <if test="poemcol != null">
+        poemcol = #{poemcol,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.poetry.pojo.Do.poemDo">
+    update poem
+    set dynasty = #{dynasty,jdbcType=VARCHAR},
+      author = #{author,jdbcType=VARCHAR},
+      poem_content = #{poemContent,jdbcType=VARCHAR},
+      poem_appreciation = #{poemAppreciation,jdbcType=VARCHAR},
+      poem_translation = #{poemTranslation,jdbcType=VARCHAR},
+      poemcol = #{poemcol,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

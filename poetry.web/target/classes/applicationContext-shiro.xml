@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager" /> <!--加载管理器-->
+        <property name="loginUrl" value="/user/login" />    <!--没有登录的时候，跳转到这个页面-->
+        <property name="unauthorizedUrl" value="/user/login" /> <!--当没有权限的时候，跳转到这个url-->
+
+        <property name="filterChainDefinitions">
+            <value>
+
+                /** = anon <!-- authc 表示需要认证才能访问的页面 -->
+
+            </value>
+        </property>
+    </bean>
+
+    <!-- 自定义Realm -->
+    <context:component-scan base-package="com.poetry.service" />
+    <context:component-scan base-package="com.poetry.service.Impl" />
+    <bean id="myShiroRealm" class="com.poetry.shiro.MyShiroReaml">
+
+    </bean>
+
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <!-- 注入realm -->
+        <property name="realm" ref="myShiroRealm"/>
+    </bean>
+
+
+
+
+</beans>
