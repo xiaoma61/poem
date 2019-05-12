@@ -1,5 +1,7 @@
 package com.poetry.pojo.Do;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class read_recordDo {
@@ -8,12 +10,12 @@ public class read_recordDo {
     private String audioPath;
 
     private Integer likesNum;
-
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date time;
 
     private Integer poemId;
 
-    private Integer ueserId;
+    private String ueserId;
 
     public Integer getId() {
         return id;
@@ -55,11 +57,11 @@ public class read_recordDo {
         this.poemId = poemId;
     }
 
-    public Integer getUeserId() {
+    public String getUeserId() {
         return ueserId;
     }
 
-    public void setUeserId(Integer ueserId) {
+    public void setUeserId(String ueserId) {
         this.ueserId = ueserId;
     }
 }

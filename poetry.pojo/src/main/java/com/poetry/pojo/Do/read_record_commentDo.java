@@ -11,7 +11,7 @@ public class read_record_commentDo {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date time;
 
-    private Integer ueserId;
+    private String ueserId;
 
     private Integer readRecordId;
 
@@ -39,11 +39,11 @@ public class read_record_commentDo {
         this.time = time;
     }
 
-    public Integer getUeserId() {
+    public String getUeserId() {
         return ueserId;
     }
 
-    public void setUeserId(Integer ueserId) {
+    public void setUeserId(String ueserId) {
         this.ueserId = ueserId;
     }
 

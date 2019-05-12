@@ -14,5 +14,14 @@
         <module name="poetry.web" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="poetry" target="1.8" />
+      <module name="poetry.commom" target="8" />
+      <module name="poetry.dao" target="1.8" />
+      <module name="poetry.pojo" target="1.8" />
+      <module name="poetry.service" target="1.8" />
+      <module name="poetry.util" target="1.8" />
+      <module name="poetry.web" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

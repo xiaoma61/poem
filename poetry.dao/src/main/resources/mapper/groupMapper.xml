@@ -9,6 +9,15 @@
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="creator_id" jdbcType="INTEGER" property="creatorId" />
   </resultMap>
+
+
+  <resultMap id="GreateGroupsDtoBaseResultMap" type="com.poetry.pojo.Dto.GreateGroupsDto">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="group_intro" jdbcType="VARCHAR" property="groupIntro" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+  </resultMap>
+
+
   <sql id="Base_Column_List">
     id, cover_path, group_intro, create_time, name, creator_id
   </sql>
@@ -106,5 +115,9 @@
 
   <select id="listGroupDo" resultMap="BaseResultMap">
     select * from groups order by create_time desc
+  </select>
+
+  <select id="listGreateGroupsDtoByCreator_Id" resultMap="GreateGroupsDtoBaseResultMap">
+    select group_intro ,name, id   from groups where creator_id=#{0}
   </select>
 </mapper>

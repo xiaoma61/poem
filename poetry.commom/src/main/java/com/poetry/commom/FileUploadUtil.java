@@ -1,7 +1,7 @@
 package com.poetry.commom;
 
 import org.apache.commons.io.FileUtils;
-import org.springframework.beans.factory.annotation.Value;
+
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import java.io.File;

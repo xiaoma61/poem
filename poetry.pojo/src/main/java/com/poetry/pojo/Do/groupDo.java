@@ -16,7 +16,7 @@ public class groupDo {
 
     private String name;
 
-    private Integer creatorId;
+    private String creatorId;
 
     public Integer getId() {
         return id;
@@ -58,11 +58,11 @@ public class groupDo {
         this.name = name == null ? null : name.trim();
     }
 
-    public Integer getCreatorId() {
+    public String getCreatorId() {
         return creatorId;
     }
 
-    public void setCreatorId(Integer creatorId) {
+    public void setCreatorId(String creatorId) {
         this.creatorId = creatorId;
     }
 }

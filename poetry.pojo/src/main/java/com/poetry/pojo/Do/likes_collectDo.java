@@ -5,7 +5,7 @@ public class likes_collectDo {
 
     private String type;
 
-    private Integer ueserId;
+    private String ueserId;
 
     private Integer poemId;
 
@@ -25,11 +25,11 @@ public class likes_collectDo {
         this.type = type == null ? null : type.trim();
     }
 
-    public Integer getUeserId() {
+    public String getUeserId() {
         return ueserId;
     }
 
-    public void setUeserId(Integer ueserId) {
+    public void setUeserId(String ueserId) {
         this.ueserId = ueserId;
     }
 

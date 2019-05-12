@@ -13,6 +13,4 @@ public class RankController extends BaseController {
 
 
 
-
-
 }

@@ -11,7 +11,7 @@ public class match_recordDo {
 
     private Byte matchScore;
 
-    private Integer ueserId;
+    private String ueserId;
 
     private Integer matchQuestionId;
 
@@ -39,11 +39,11 @@ public class match_recordDo {
         this.matchScore = matchScore;
     }
 
-    public Integer getUeserId() {
+    public String getUeserId() {
         return ueserId;
     }
 
-    public void setUeserId(Integer ueserId) {
+    public void setUeserId(String ueserId) {
         this.ueserId = ueserId;
     }
 

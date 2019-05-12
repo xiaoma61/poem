@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.poetry.dao.MatchResultMapper">
+
+  <resultMap id="BaseResultMap" type="com.poetry.pojo.Do.match_resultDo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <id column="winner_id" jdbcType="VARCHAR" property="winnerId" />
+    <result column="game_winningstreak" jdbcType="BIGINT" property="gameWinningstreak" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, winner_id, game_winningstreak, time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.poetry.pojo.Do.match_resultKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from match_result
+    where id = #{id,jdbcType=BIGINT}
+      and winner_id = #{winnerId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.poetry.pojo.Do.match_resultKey">
+    delete from match_result
+    where id = #{id,jdbcType=BIGINT}
+      and winner_id = #{winnerId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.poetry.pojo.Do.match_resultDo">
+    insert into match_result (id, winner_id, game_winningstreak, 
+      time)
+    values (#{id,jdbcType=BIGINT}, #{winnerId,jdbcType=VARCHAR}, #{gameWinningstreak,jdbcType=BIGINT}, 
+      #{time,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.poetry.pojo.Do.match_resultDo">
+    insert into match_result
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="winnerId != null">
+        winner_id,
+      </if>
+      <if test="gameWinningstreak != null">
+        game_winningstreak,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="winnerId != null">
+        #{winnerId,jdbcType=VARCHAR},
+      </if>
+      <if test="gameWinningstreak != null">
+        #{gameWinningstreak,jdbcType=BIGINT},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.poetry.pojo.Do.match_resultDo">
+    update match_result
+    <set>
+      <if test="gameWinningstreak != null">
+        game_winningstreak = #{gameWinningstreak,jdbcType=BIGINT},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+      and winner_id = #{winnerId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.poetry.pojo.Do.match_resultDo">
+    update match_result
+    set game_winningstreak = #{gameWinningstreak,jdbcType=BIGINT},
+      time = #{time,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+      and winner_id = #{winnerId,jdbcType=VARCHAR}
+  </update>
+</mapper>

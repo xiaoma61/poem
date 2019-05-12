@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="poetry.web:war">
+    <output-path>$PROJECT_DIR$/poetry.web/target</output-path>
+    <root id="archive" name="poetry.web.war">
+      <element id="artifact" artifact-name="poetry.web:war exploded" />
+    </root>
+  </artifact>
+</component>

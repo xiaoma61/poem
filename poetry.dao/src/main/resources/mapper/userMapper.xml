@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.poetry.dao.userMapper">
+<mapper namespace="com.poetry.dao.UserMapper">
   <resultMap id="BaseResultMap" type="com.poetry.pojo.Do.userDo">
-    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="gold_coin_num" jdbcType="INTEGER" property="goldCoinNum" />
     <result column="experience_val" jdbcType="INTEGER" property="experienceVal" />
     <result column="sex" jdbcType="CHAR" property="sex" />
     <result column="avata_path" jdbcType="VARCHAR" property="avataPath" />
+  </resultMap>
+  <resultMap id="PeopleDtoBaseResultMap" type="com.poetry.pojo.Dto.PeopleDto">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="gold_coin_num" jdbcType="INTEGER" property="goldCoinNum" />
+    <result column="experience_val" jdbcType="INTEGER" property="experienceVal" />
+  </resultMap>
+ <resultMap id="PeopleDetailDtoBaseResultMap" type="com.poetry.pojo.Dto.PeopleDetailDto">
+  <id column="id" jdbcType="VARCHAR" property="id" />
+  <result column="gold_coin_num" jdbcType="INTEGER" property="goldCoinNum" />
+  <result column="game_winning_nums" jdbcType="BIGINT" property="gameWinningstreak" />
+ </resultMap>
+  <resultMap id="PeopleStatisticsDtoResultMap" type="com.poetry.pojo.Dto.PeopleStatisticsDto">
+    <result column="time" jdbcType="INTEGER" property="time" />
+    <result column="count" jdbcType="BIGINT" property="count" />
   </resultMap>
   <sql id="Base_Column_List">
     id, user_name, password, gold_coin_num, experience_val, sex, avata_path
@@ -114,4 +128,22 @@
       avata_path = #{avataPath,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+<select id="getPeopleDtobyId" resultMap="PeopleDtoBaseResultMap">
+  select id,gold_coin_num,experience_val from user where id=#{0}
+</select>
+
+  <select id="getPeopleDetailDto" resultMap="PeopleDetailDtoBaseResultMap">
+     select u.id,max(m.game_winningstreak)as game_winning_nums ,u.gold_coin_num from user u left join match_result m on  u.id=m.winner_id where u.id=#{0}
+  </select>
+
+  <select id="listPeopleStatisticsDto" resultMap="PeopleStatisticsDtoResultMap" statementType="CALLABLE">
+    {call getread_record_statistics(#{id, mode=IN }) }
+  </select>
+
+  <update id="updateUserbyid">
+    update user set  gold_coin_num=gold_coin_num +#{1} where id=#{0}
+  </update>
+
+
 </mapper>

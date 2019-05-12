@@ -3,30 +3,39 @@ package com.poetry.web.controller.basecontroller;
 import com.poetry.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 public abstract class  BaseController {
     @Autowired
     protected
     GroupService groupService;
     @Autowired
-    GroupUserService groupUserService;
+    protected GroupUserService groupUserService;
     @Autowired
-    LikesCollectService likesCollectService;
+    protected LikesCollectService likesCollectService;
     @Autowired
-    MatchQuestionService matchQuestionService;
+    protected MatchQuestionService matchQuestionService;
     @Autowired
-    PoemPoemTypeService poemPoemTypeService;
+    protected PoemPoemTypeService poemPoemTypeService;
     @Autowired
-    PoemService poemService;
+    protected PoemService poemService;
     @Autowired
-    PoemTypeService poemTypeService;
+    protected PoemTypeService poemTypeService;
     @Autowired
-    PostCommentService postCommentService;
+    protected PostCommentService postCommentService;
     @Autowired
-    ReadRecordCommentService readRecordCommentService;
+    protected ReadRecordCommentService readRecordCommentService;
     @Autowired
-    ReadRecordService readRecordService;
+    protected ReadRecordService readRecordService;
     @Autowired
-    UserService ueserService;
+    protected UserService ueserService;
+
+    public String  getOpenId(HttpServletRequest request){
+        HttpSession session=request.getSession();
+        String id= (String) session.getAttribute("openid");
+        return "1";
+    }
 
 
 

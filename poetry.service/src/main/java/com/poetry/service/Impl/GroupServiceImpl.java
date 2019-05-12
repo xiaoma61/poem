@@ -4,6 +4,7 @@ package com.poetry.service.Impl;
 import com.poetry.dao.GroupMapper;
 
 import com.poetry.pojo.Do.groupDo;
+import com.poetry.pojo.Dto.GreateGroupsDto;
 import com.poetry.service.GroupService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,5 +25,11 @@ public class GroupServiceImpl implements GroupService {
     @Override
     public List<groupDo> listGroupDo() {
         return groupMapper.listGroupDo();
+    }
+
+    @Override
+    public   List<GreateGroupsDto> listGreateGroupsDtoByCreator_Id(String Creator_id){
+
+        return groupMapper.listGreateGroupsDtoByCreator_Id(Creator_id);
     }
 }

@@ -11,7 +11,7 @@ public class post_commentDo {
 
     private String commentContent;
 
-    private Integer commenterId;
+    private String commenterId;
 
     private Integer postId;
 
@@ -39,11 +39,11 @@ public class post_commentDo {
         this.commentContent = commentContent == null ? null : commentContent.trim();
     }
 
-    public Integer getCommenterId() {
+    public String getCommenterId() {
         return commenterId;
     }
 
-    public void setCommenterId(Integer commenterId) {
+    public void setCommenterId(String commenterId) {
         this.commenterId = commenterId;
     }
 
