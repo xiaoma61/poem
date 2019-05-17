@@ -2,6 +2,8 @@ package com.poetry.dao;
 
 import com.poetry.pojo.Do.poem_typeDo;
 
+import java.util.List;
+
 public interface PoemTypeMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,10 @@ public interface PoemTypeMapper {
     int updateByPrimaryKeySelective(poem_typeDo record);
 
     int updateByPrimaryKey(poem_typeDo record);
+
+    List<poem_typeDo> listPoem_typeDo();
+
+
+
+
 }

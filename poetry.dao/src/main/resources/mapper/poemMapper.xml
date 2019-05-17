@@ -10,6 +10,35 @@
     <result column="poem_translation" jdbcType="VARCHAR" property="poemTranslation" />
     <result column="poemcol" jdbcType="VARCHAR" property="poemcol" />
   </resultMap>
+  <resultMap id="PeopleRegisterDtoBaseResultMap" type="com.poetry.pojo.Dto.PeopleRegisterDto">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="dynasty" jdbcType="VARCHAR" property="dynasty" />
+    <result column="author" jdbcType="VARCHAR" property="author" />
+    <result column="poem_content" jdbcType="VARCHAR" property="poemContent" />
+    <result column="poemcol" jdbcType="VARCHAR" property="poemcol" />
+  </resultMap>
+
+  <resultMap id="PoemDtoBaseResultMap" type="com.poetry.pojo.Dto.PoemDto">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="dynasty" jdbcType="VARCHAR" property="dynasty" />
+    <result column="author" jdbcType="VARCHAR" property="author" />
+    <result column="poem_content" jdbcType="VARCHAR" property="poemContent" />
+    <result column="poemcol" jdbcType="VARCHAR" property="poemcol" />
+    <result column="readNum" jdbcType="INTEGER" property="readNum" />
+    <result column="likeNum" jdbcType="INTEGER" property="likeNum" />
+    <result column="readCommentNum" jdbcType="INTEGER" property="readCommentNum" />
+
+  </resultMap>
+
+  <resultMap id="PoemTypeDtoResultMap" type="com.poetry.pojo.Dto.PoemTypeDto">
+
+    <result column="poem_type_name" jdbcType="VARCHAR" property="poemTypeName" />
+    <result column="poem_type_id" jdbcType="INTEGER" property="poemTypeId" />
+    <collection property="poemDto" resultMap="PoemDtoBaseResultMap"></collection>
+  </resultMap>
+
+
+
   <sql id="Base_Column_List">
     id, dynasty, author, poem_content, poem_appreciation, poem_translation, poemcol
   </sql>
@@ -114,4 +143,70 @@
       poemcol = #{poemcol,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="getPeopleRegisterDto" resultMap="PeopleRegisterDtoBaseResultMap">
+   select id ,dynasty, author,poem_content,poemcol from poem where id>= (select floor(max(id)*rand() ) from poem) ORDER BY id limit 1;
+  </select>
+  <select id="listPoemDto" resultMap="PoemDtoBaseResultMap">
+SELECT p.id,p.dynasty,p.author,p.poem_content,p.poemcol,COUNT(DISTINCT rr.id) as readNum
+,COUNT(DISTINCT lc.id) as likeNum
+,COUNT(DISTINCT rrc.id) as readCommentNum
+FROM
+poem as p  LEFT JOIN read_record as rr on  p.id=rr.poem_id
+LEFT JOIN likes_collect as lc on p.id=lc.poem_id and lc.type=#{1}
+LEFT JOIN read_record_comment rrc ON rrc.read_record_id=rr.id
+WHERE p.author LIKE CONCAT('%',#{0},'%')  GROUP BY p.id
+
+union
+
+
+SELECT p.id,p.dynasty,p.author,p.poem_content,p.poemcol,COUNT(DISTINCT rr.id) as readNum
+,COUNT(DISTINCT lc.id) as likeNum
+,COUNT(DISTINCT rrc.id) as readCommentNum
+FROM
+poem as p  LEFT JOIN read_record as rr on  p.id=rr.poem_id
+LEFT JOIN likes_collect as lc on p.id=lc.poem_id and lc.type=#{1}
+LEFT JOIN read_record_comment rrc ON rrc.read_record_id=rr.id
+WHERE p.poem_content LIKE concat('%',#{0},'%')   GROUP BY p.id
+
+
+union
+
+
+SELECT p.id,p.dynasty,p.author,p.poem_content,p.poemcol,COUNT(DISTINCT rr.id) as readNum
+,COUNT(DISTINCT lc.id) as likeNum
+,COUNT(DISTINCT rrc.id) as readCommentNum
+FROM
+poem as p  LEFT JOIN read_record as rr on  p.id=rr.poem_id
+LEFT JOIN likes_collect as lc on p.id=lc.poem_id and lc.type=#{1}
+LEFT JOIN read_record_comment rrc ON rrc.read_record_id=rr.id
+WHERE p.poemcol LIKE concat('%',#{0},'%')   GROUP BY p.id
+
+
+  </select>
+
+  <select id="getPoemTypeDto" resultMap="PoemTypeDtoResultMap">
+
+    SELECT p.id,p.dynasty,p.author,p.poem_content,p.poemcol,COUNT(DISTINCT rr.id) as readNum
+,COUNT(DISTINCT lc.id) as likeNum
+,COUNT(DISTINCT rrc.id) as readCommentNum
+,pt.poem_type_name
+,pt.id as poem_type_id
+FROM
+poem as p  LEFT JOIN read_record as rr on  p.id=rr.poem_id
+LEFT JOIN likes_collect as lc on p.id=lc.poem_id and lc.type="点赞"
+LEFT JOIN read_record_comment rrc ON rrc.read_record_id=rr.id
+LEFT JOIN  poem_poem_type ptt on p.id=ptt.poem_id
+LEFT JOIN poem_type pt ON pt.id=ptt.poem_type_id
+WHERE pt.id=#{0}  GROUP BY p.id
+
+
+
+
+  </select>
+
+<select id="getPoemLikeCollectionDto" resultMap="">
+
+</select>
+
 </mapper>

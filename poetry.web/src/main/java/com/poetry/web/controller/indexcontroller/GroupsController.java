@@ -5,6 +5,8 @@ import com.poetry.web.controller.basecontroller.BaseController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @author myl
  * @description小组
@@ -15,4 +17,8 @@ import org.springframework.web.bind.annotation.*;
 public class GroupsController extends BaseController {
 
 
+    @Override
+    public List doService(int type) {
+        return null;
+    }
 }

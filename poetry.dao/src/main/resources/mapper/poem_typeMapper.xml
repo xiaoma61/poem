@@ -55,4 +55,8 @@
     set poem_type_name = #{poemTypeName,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="listPoem_typeDo" resultMap="BaseResultMap">
+    select id,poem_type_name  from poem_type
+  </select>
 </mapper>

@@ -1,19 +1,18 @@
 package com.poetry.web.controller.peoplecontroller;
 
 import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import com.poetry.commom.R;
-import com.poetry.constant.Constant;
+import com.poetry.commom.constant.Constants;
 import com.poetry.pojo.Do.read_recordDo;
-import com.poetry.pojo.Dto.GreateGroupsDto;
-import com.poetry.pojo.Dto.Likes_CollectionDto;
 import com.poetry.web.controller.basecontroller.BaseController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Date;
 import java.util.List;
+
+import static com.poetry.commom.constant.Constants.COLLECTION;
+import static com.poetry.commom.constant.Constants.LIKE;
 
 
 /**
@@ -24,6 +23,8 @@ import java.util.List;
 @Controller
 @RequestMapping("/people")
 public class PeopleController extends BaseController {
+
+
     /**
      * @description 获取用户的信息
      * @author myl
@@ -69,14 +70,17 @@ public class PeopleController extends BaseController {
 
         String type="";
         if (like_collect==1){
-            type="点赞";
+            type=LIKE;
 
         }else {
-            type="收藏";
+            type=COLLECTION;
         }
-        List<Likes_CollectionDto>collectionDtos=likesCollectService.listLikes_CollectionDto(id,type);
-        PageInfo<Likes_CollectionDto>pageInfo=new PageInfo<>(collectionDtos);
-        return R.ok(pageInfo);
+        this.id=id;
+        mtype=type;
+
+        /*List<Likes_CollectionDto>collectionDtos=likesCollectService.listLikes_CollectionDto(id,type);
+        PageInfo<Likes_CollectionDto>pageInfo=new PageInfo<>(collectionDtos);*/
+        return R.ok( getPageInfo(start,rows,1));
     }
 
     /**
@@ -92,10 +96,11 @@ public class PeopleController extends BaseController {
     @ResponseBody()
     public R getCreateGroup(HttpServletRequest request,@RequestParam(name = "start",defaultValue = "0")int start,@RequestParam(name = "rows",defaultValue = "10")int rows,@PathVariable(value = "Id")String id){
         PageHelper.startPage(start,rows);
-        String Creator_Id=id;
-        List<GreateGroupsDto>collectionDtos=groupService.listGreateGroupsDtoByCreator_Id(Creator_Id);
-        PageInfo<GreateGroupsDto>pageInfo=new PageInfo<>(collectionDtos);
-        return R.ok(pageInfo);
+       /* String Creator_Id=id;*/
+        this.id=id;
+       /* List<GreateGroupsDto>collectionDtos=groupService.listGreateGroupsDtoByCreator_Id(Creator_Id);
+        PageInfo<GreateGroupsDto>pageInfo=new PageInfo<>(collectionDtos);*/
+        return R.ok( getPageInfo(start,rows,2));
     }
 
     /**
@@ -113,13 +118,48 @@ public class PeopleController extends BaseController {
     }
 
 
+    /**
+     * @description 签到
+     * @author myl
+     * @date 2019/5/14
+     * @param request
+     * @param id
+     * @param readRecordDo
+     * @return [request, id, readRecordDo]
+     */
     @RequestMapping(value = "/{Id}/register",method = RequestMethod.POST)
     @ResponseBody()
-    public R getRegister(HttpServletRequest request, @PathVariable(value = "Id")String id, @RequestBody read_recordDo readRecordDo){
+    public R postRegister(HttpServletRequest request, @PathVariable(value = "Id")String id, @RequestBody read_recordDo readRecordDo){
         //更新个人信息的金币数和等级
-        return R.ok(readRecordService.register(readRecordDo, Constant.GOLD_COIN_NUM_REGISTER));
+        return R.ok(readRecordService.register(readRecordDo, Constants.GOLD_COIN_NUM_REGISTER));
     }
 
 
 
+    /**
+     * @description 随机获取诗集
+     * @author myl
+     * @date 2019/5/14
+     * @param request
+     * @param id
+     * @return [request, id]
+     */
+    @RequestMapping(value = "/{Id}/register",method = RequestMethod.GET)
+    @ResponseBody()
+    public R getRegister(HttpServletRequest request, @PathVariable(value = "Id")String id){
+        //更新个人信息的金币数和等级
+        return R.ok(poemService.getPeopleRegisterDto());
+    }
+
+
+    @Override
+    public List doService(int type) {
+        if (type==1){
+            return likesCollectService.listLikes_CollectionDto(id,mtype);
+        }
+        if (type==2){
+            return groupService.listGreateGroupsDtoByCreator_Id(id);
+        }
+        return null;
+    }
 }

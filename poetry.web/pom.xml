@@ -88,18 +88,14 @@
 
 
 
-            <dependency>
+        <dependency>
                 <groupId>com.poetry</groupId>
                 <artifactId>poetry.service</artifactId>
                 <version>1.0-SNAPSHOT</version>
                 <scope>compile</scope>
-            </dependency>
-        <dependency>
-            <groupId>com.poetry</groupId>
-            <artifactId>poetry.commom</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
         </dependency>
+
+
 
         <dependency>
             <groupId>com.alibaba</groupId>

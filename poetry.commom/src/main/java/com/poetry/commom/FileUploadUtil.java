@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.UUID;
 
-import static com.poetry.commom.ConfigConsts.FILE_PATH;
+import static com.poetry.commom.ConfigConsts.ConfigConsts.FILE_PATH;
 
 /**
  * @author myl

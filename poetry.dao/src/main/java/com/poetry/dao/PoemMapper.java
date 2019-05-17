@@ -1,6 +1,12 @@
 package com.poetry.dao;
 
 import com.poetry.pojo.Do.poemDo;
+import com.poetry.pojo.Dto.PeopleRegisterDto;
+import com.poetry.pojo.Dto.PoemDto;
+import com.poetry.pojo.Dto.PoemLikeCollectionDto;
+import com.poetry.pojo.Dto.PoemTypeDto;
+
+import java.util.List;
 
 public interface PoemMapper {
     int deleteByPrimaryKey(Integer id);
@@ -14,4 +20,39 @@ public interface PoemMapper {
     int updateByPrimaryKeySelective(poemDo record);
 
     int updateByPrimaryKey(poemDo record);
+
+    /**
+     * @description 随机获取诗词 签到实现
+     * @author myl
+     * @date 2019/5/14
+     * @param
+     * @return []
+     */
+    PeopleRegisterDto getPeopleRegisterDto();
+
+    /**
+     * @description 搜索
+     * @author myl
+     * @date 2019/5/16
+     * @param q
+     * @param type
+     * @return [q, type]
+     */
+    List<PoemDto> listPoemDto(String q,String type);
+
+    /**
+     * @description 查找类型
+     * @author myl
+     * @date 2019/5/17
+     * @param id
+     * @return [id]
+     */
+    List<PoemTypeDto> getPoemTypeDto(int id);
+
+
+    PoemLikeCollectionDto getPoemLikeCollectionDto(String user_id,int poem_id);
+
+
+
+
 }

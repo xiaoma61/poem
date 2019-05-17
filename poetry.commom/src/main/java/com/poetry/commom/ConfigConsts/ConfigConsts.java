@@ -1,4 +1,4 @@
-package com.poetry.commom;
+package com.poetry.commom.ConfigConsts;
 
 /**
  * @author myl

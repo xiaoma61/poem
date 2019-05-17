@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context-4.0.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+    <description>redis集群</description>
+
+    <!-- 使用annotation 自动注册bean, 并保证@Required、@Autowired的属性被注入 -->
+    <context:component-scan base-package="com.IMBA.redis">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
+    </context:component-scan>
+
+    <!-- 加载properties文件 -->
+    <bean id="propertyPlaceholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:redis.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- 配置JedisPoolConfig实例 -->
+    <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <!--最大空闲数-->
+        <property name="maxIdle" value="300" />
+        <!--连接池的最大数据库连接数  -->
+        <property name="maxTotal" value="600" />
+        <!--最大建立连接等待时间-->
+        <property name="maxWaitMillis" value="1000" />
+        <!--是否在从池中取出连接前进行检验,如果检验失败,则从池中去除连接并尝试取出另一个-->
+        <property name="testOnBorrow" value="true" />
+        <!--逐出连接的最小空闲时间 默认1800000毫秒(30分钟)-->
+        <property name="minEvictableIdleTimeMillis" value="300000" />
+        <!--每次逐出检查时 逐出的最大数目 如果为负数就是 : 1/abs(n), 默认3-->
+        <property name="numTestsPerEvictionRun" value="1024" />
+        <!--逐出扫描的时间间隔(毫秒) 如果为负数,则不运行逐出线程, 默认-1-->
+        <property name="timeBetweenEvictionRunsMillis" value="30000" />
+    </bean>
+    <bean id="redisClusterConfig" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" >
+        <property name="hostName" value="localhost"></property>
+        <property name="port" value="6379"></property>
+
+        <property name="poolConfig"  ref="poolConfig"></property>
+    </bean>
+
+<!--
+    &lt;!&ndash; Redis集群配置 &ndash;&gt;
+    <bean id="redisClusterConfig" class="org.springframework.data.redis.connection.RedisClusterConfiguration">
+        <property name="maxRedirects" value="1"></property>
+        <property name="clusterNodes">
+            <set>
+                <bean class="org.springframework.data.redis.connection.RedisNode">
+                    <constructor-arg name="host" value="localhost"></constructor-arg>
+                    <constructor-arg name="port" value="6379"></constructor-arg>
+                </bean>
+
+            </set>
+        </property>
+    </bean>
+-->
+
+
+<!--    &lt;!&ndash; 配置JedisConnectionFactory &ndash;&gt;
+    <bean id="jeidsConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+        <constructor-arg name="clusterConfig" ref="redisClusterConfig" />
+        <property name="poolConfig" ref="poolConfig"/>
+        <property name="timeout" value="8000" />
+        &lt;!&ndash;<property name="password" value="123456"></property>&ndash;&gt;
+    </bean>-->
+
+    <!-- 配置RedisTemplate -->
+    <!-- 调用连接池工厂配置 -->
+    <bean id="redisTemplate" class=" org.springframework.data.redis.core.RedisTemplate">
+        <property name="connectionFactory" ref="redisClusterConfig"></property>
+
+        <!--  如果不配置Serializer，那么存储的时候智能使用String，如果用User类型存储，那么会提示错误User can't cast
+         to String！！！   -->
+        <property name="keySerializer">
+            <bean
+                    class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+        </property>
+        <property name="valueSerializer">
+            <bean
+                    class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer" />
+        </property>
+    </bean>
+
+</beans>

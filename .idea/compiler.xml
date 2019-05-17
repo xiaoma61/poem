@@ -16,7 +16,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="poetry" target="1.8" />
-      <module name="poetry.commom" target="8" />
+      <module name="poetry.commom" target="1.8" />
       <module name="poetry.dao" target="1.8" />
       <module name="poetry.pojo" target="1.8" />
       <module name="poetry.service" target="1.8" />
