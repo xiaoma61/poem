@@ -94,13 +94,17 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.poetry.pojo.Do.read_recordDo">
+  <update id="updateLikeNumsByIdAdd" >
     update read_record
-    set audio_path = #{audioPath,jdbcType=VARCHAR},
-      likes_num = #{likesNum,jdbcType=INTEGER},
-      time = #{time,jdbcType=TIMESTAMP},
-      poem_id = #{poemId,jdbcType=INTEGER},
-      ueser_id = #{ueserId,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
+    set
+      likes_num = likes_num+1
+    where id = #{0}
+  </update>
+
+  <update id="updateLikeNumsById" >
+    update read_record
+    set
+      likes_num = likes_num-1
+    where id = #{0}
   </update>
 </mapper>

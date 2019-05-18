@@ -20,6 +20,9 @@ public interface LikesCollectMapper {
 
     List<Likes_CollectionDto> listLikes_CollectionDto(String id,String type);
 
+    int deleteByUeser_idAndPoem_idAndType(String user_id,Integer poem_id,String type);
+
+
 
 
 

@@ -13,5 +13,23 @@ public interface ReadRecordMapper {
 
     int updateByPrimaryKeySelective(read_recordDo record);
 
-    int updateByPrimaryKey(read_recordDo record);
+    /**
+     * @description 更新增加
+     * @author myl
+     * @date 2019/5/18
+     * @param id
+     * @return [id]
+     */
+    int updateLikeNumsByIdAdd(int id);
+    /**
+     * @description 更新减少
+     * @author myl
+     * @date 2019/5/18
+     * @param id
+     * @return [id]
+     */
+    int  updateLikeNumsById(int id);
+
+
+
 }

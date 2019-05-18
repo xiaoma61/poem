@@ -31,6 +31,8 @@
     delete from likes_collect
     where id = #{id,jdbcType=INTEGER}
   </delete>
+
+
   <insert id="insert" parameterType="com.poetry.pojo.Do.likes_collectDo">
     insert into likes_collect (id, type, ueser_id, 
       poem_id)
@@ -94,4 +96,10 @@
   <select id="listLikes_CollectionDto" resultMap="Likes_CollectionDtoBaseResultMap" resultType="String">
     select lc.poem_id ,lc.id, p.dynasty,p.author,p.poemcol  from likes_collect lc inner join poem p on lc.poem_id =p.id where lc.ueser_id=#{0} and lc.type=#{1}  group by  lc.poem_id
   </select>
+
+  <delete id="deleteByUeser_idAndPoem_idAndType" >
+    delete likes_collect
+    where ueser_id = #{0} and poem_id=#{1} and type=#{2}
+  </delete>
+
 </mapper>

@@ -21,4 +21,10 @@ public interface ReadRecordService {
      */
     String register(read_recordDo record, int gold_coin_num);
 
+    int updateLikeNumsByIdAdd(int id);
+
+    int  updateLikeNumsById(int id);
+
+    void setLike(int id,int type);
+
 }

@@ -34,5 +34,30 @@ public class ReadRecordServiceImpl implements ReadRecordService {
         return "增加 "+gold_coin_num+" 金币";
     }
 
+    @Override
+    public int updateLikeNumsByIdAdd(int id) {
+        readRecordMapper.updateLikeNumsByIdAdd(id);
+        return 0;
+    }
+
+    @Override
+    public int updateLikeNumsById(int id) {
+
+        readRecordMapper.updateLikeNumsById(id);
+        return 0;
+    }
+
+    @Override
+    public void setLike(int id, int type) {
+        if (type==1){
+            updateLikeNumsByIdAdd(id);
+        }else {
+
+            updateLikeNumsById(id);
+        }
+
+
+    }
+
 
 }

@@ -41,6 +41,7 @@ public abstract class  BaseController <T>{
     protected  String mtype="";
     protected int type_id=0;
     protected String id="";
+    protected int poem_id=0;
 
 
 

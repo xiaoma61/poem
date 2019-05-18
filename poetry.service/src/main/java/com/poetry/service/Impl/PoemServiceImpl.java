@@ -7,10 +7,7 @@ import com.poetry.commom.R;
 import com.poetry.dao.PoemMapper;
 import com.poetry.dao.redis.RedisUtil;
 import com.poetry.pojo.Do.poem_typeDo;
-import com.poetry.pojo.Dto.PeopleRegisterDto;
-import com.poetry.pojo.Dto.PoemDto;
-import com.poetry.pojo.Dto.PoemTypeDto;
-import com.poetry.pojo.Dto.QDto;
+import com.poetry.pojo.Dto.*;
 import com.poetry.service.PoemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -88,6 +85,18 @@ public class PoemServiceImpl implements PoemService {
         poemTypeDo.setPoemTypeName(poemType);
 
         redisUtil.incrementScore(REAK_TYPE_BY_Q, JSONObject.toJSON(poemTypeDo).toString(),1);
+    }
+
+    @Override
+    public PoemLikeCollectionDto getPoemLikeCollectionDto(String user_id, int poem_id) {
+
+        return poemMapper.getPoemLikeCollectionDto(user_id, poem_id);
+
+    }
+
+    @Override
+    public List<PoemReadRecordDto> listPoemReadRecordDtoResultMap(int id) {
+        return poemMapper.listPoemReadRecordDtoResultMap(id);
     }
 
 

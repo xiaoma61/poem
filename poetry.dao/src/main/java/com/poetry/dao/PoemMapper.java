@@ -1,10 +1,7 @@
 package com.poetry.dao;
 
 import com.poetry.pojo.Do.poemDo;
-import com.poetry.pojo.Dto.PeopleRegisterDto;
-import com.poetry.pojo.Dto.PoemDto;
-import com.poetry.pojo.Dto.PoemLikeCollectionDto;
-import com.poetry.pojo.Dto.PoemTypeDto;
+import com.poetry.pojo.Dto.*;
 
 import java.util.List;
 
@@ -50,7 +47,19 @@ public interface PoemMapper {
     List<PoemTypeDto> getPoemTypeDto(int id);
 
 
+    /**
+     * @description 诗词细节信息
+     * @author myl
+     * @date 2019/5/18
+     * @param user_id
+     * @param poem_id
+     * @return [user_id, poem_id]
+     */
     PoemLikeCollectionDto getPoemLikeCollectionDto(String user_id,int poem_id);
+
+    List<PoemReadRecordDto> listPoemReadRecordDtoResultMap(int id);
+
+
 
 
 

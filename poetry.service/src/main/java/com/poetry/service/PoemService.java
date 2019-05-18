@@ -1,9 +1,7 @@
 package com.poetry.service;
 
 import com.poetry.commom.R;
-import com.poetry.pojo.Dto.PeopleRegisterDto;
-import com.poetry.pojo.Dto.PoemDto;
-import com.poetry.pojo.Dto.PoemTypeDto;
+import com.poetry.pojo.Dto.*;
 
 import java.util.List;
 import java.util.Set;
@@ -51,6 +49,9 @@ public interface PoemService {
 
     void recordType(Integer type_id,String poemType) ;
 
+    PoemLikeCollectionDto getPoemLikeCollectionDto(String user_id, int poem_id);
+
+    List<PoemReadRecordDto> listPoemReadRecordDtoResultMap(int id);
 
 
 }

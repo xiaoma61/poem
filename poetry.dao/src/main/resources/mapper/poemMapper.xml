@@ -33,10 +33,44 @@
   <resultMap id="PoemTypeDtoResultMap" type="com.poetry.pojo.Dto.PoemTypeDto">
 
     <result column="poem_type_name" jdbcType="VARCHAR" property="poemTypeName" />
+
     <result column="poem_type_id" jdbcType="INTEGER" property="poemTypeId" />
+
     <collection property="poemDto" resultMap="PoemDtoBaseResultMap"></collection>
+
   </resultMap>
 
+  <resultMap id="LikesCollectionDtoResultMap" type="com.poetry.pojo.Dto.LikeCollectionDto">
+    <result column="type" jdbcType="VARCHAR" property="type" />
+  </resultMap>
+
+
+  <resultMap id="PoemLikeCollectionDtoResultMap" type="com.poetry.pojo.Dto.PoemLikeCollectionDto">
+
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="dynasty" jdbcType="VARCHAR" property="dynasty" />
+    <result column="author" jdbcType="VARCHAR" property="author" />
+    <result column="poem_content" jdbcType="VARCHAR" property="poemContent" />
+    <result column="poemcol" jdbcType="VARCHAR" property="poemcol" />
+    <result column="readNum" jdbcType="INTEGER" property="readNum" />
+    <result column="likeNum" jdbcType="INTEGER" property="likeNum" />
+    <result column="readCommentNum" jdbcType="INTEGER" property="readCommentNum" />
+    <collection property="types" resultMap="LikesCollectionDtoResultMap"></collection>
+
+  </resultMap>
+
+  <resultMap id="PoemReadRecordDtoResultMap" type="com.poetry.pojo.Dto.PoemReadRecordDto">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="avata_path" jdbcType="VARCHAR" property="avataPath" />
+    <result column="ueser_id" jdbcType="INTEGER" property="ueserId" />
+    <result column="poem_id" jdbcType="INTEGER" property="poemId" />
+    <result column="likes_num" jdbcType="INTEGER" property="likesNum" />
+    <result column="audio_path" jdbcType="VARCHAR" property="audioPath" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="read_record_commentNum" jdbcType="INTEGER" property="read_record_commentNum" />
+
+  </resultMap>
 
 
   <sql id="Base_Column_List">
@@ -205,8 +239,21 @@ WHERE pt.id=#{0}  GROUP BY p.id
 
   </select>
 
-<select id="getPoemLikeCollectionDto" resultMap="">
-
+<select id="getPoemLikeCollectionDto" resultMap="PoemLikeCollectionDtoResultMap">
+SELECT poem.id,poem.author,poem.dynasty,poem.poemcol,poem_appreciation,poem.poem_content,poem.poem_translation, likes_collect.type FROM poem
+LEFT JOIN likes_collect ON poem.id=likes_collect.poem_id and likes_collect.ueser_id=#{0}
+WHERE poem.id=#{1};
 </select>
+  <select id="listPoemReadRecordDtoResultMap" resultMap="PoemReadRecordDtoResultMap">
+SELECT read_record.id, read_record.time,read_record.audio_path,read_record.likes_num,u.avata_path,u.id as ueserId,u.user_name ,COUNT(DISTINCT read_record_comment.id) as read_record_commentNum
+FROM
+poem
+LEFT JOIN read_record on poem.id=read_record.poem_id
+LEFT JOIN `user` u on u.id=read_record.ueser_id
+LEFT JOIN read_record_comment on read_record.id=read_record_comment.read_record_id
+WHERE poem_id=#{0} GROUP BY read_record.id
+
+
+  </select>
 
 </mapper>
