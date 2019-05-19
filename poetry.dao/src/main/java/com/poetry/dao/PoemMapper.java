@@ -57,7 +57,7 @@ public interface PoemMapper {
      */
     PoemLikeCollectionDto getPoemLikeCollectionDto(String user_id,int poem_id);
 
-    List<PoemReadRecordDto> listPoemReadRecordDtoResultMap(int id);
+    List<PoemReadRecordDto> listPoemReadRecordDtoResultMap(int id,String user_id);
 
 
 

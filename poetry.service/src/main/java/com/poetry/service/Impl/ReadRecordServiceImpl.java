@@ -2,6 +2,8 @@ package com.poetry.service.Impl;
 
 import com.poetry.dao.ReadRecordMapper;
 import com.poetry.pojo.Do.read_recordDo;
+import com.poetry.pojo.Do.read_record_likeDo;
+import com.poetry.service.ReadRecordLikeService;
 import com.poetry.service.ReadRecordService;
 import com.poetry.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,8 @@ public class ReadRecordServiceImpl implements ReadRecordService {
     ReadRecordMapper readRecordMapper;
     @Autowired
     UserService userService;
+    @Autowired
+    ReadRecordLikeService readRecordLikeService;
 
     @Override
     public int insert(read_recordDo record) {
@@ -48,10 +52,20 @@ public class ReadRecordServiceImpl implements ReadRecordService {
     }
 
     @Override
-    public void setLike(int id, int type) {
+    public void setLike(int id, String user_id,int type) {
         if (type==1){
+            //添加
+
+
+            read_record_likeDo record=new read_record_likeDo();
+            record.setReadRecordId(id);
+            record.setUserId(user_id);
+            readRecordLikeService.insert(record);
             updateLikeNumsByIdAdd(id);
         }else {
+
+            //删除
+            readRecordLikeService.deleteByReadRecordIdAndUserId(id,user_id);
 
             updateLikeNumsById(id);
         }

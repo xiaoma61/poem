@@ -98,7 +98,7 @@
   </select>
 
   <delete id="deleteByUeser_idAndPoem_idAndType" >
-    delete likes_collect
+    delete from likes_collect
     where ueser_id = #{0} and poem_id=#{1} and type=#{2}
   </delete>
 

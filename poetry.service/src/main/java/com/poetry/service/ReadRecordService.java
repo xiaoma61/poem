@@ -25,6 +25,6 @@ public interface ReadRecordService {
 
     int  updateLikeNumsById(int id);
 
-    void setLike(int id,int type);
+    void setLike(int id,String user_id,int type);
 
 }

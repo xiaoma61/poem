@@ -29,6 +29,16 @@ public class PoemReadRecordDto {
 
     private Integer read_record_commentNum;
 
+    private int isLike;
+
+    public int getIsLike() {
+        return isLike;
+    }
+
+    public void setIsLike(int isLike) {
+        this.isLike = isLike;
+    }
+
     public Integer getRead_record_commentNum() {
         return read_record_commentNum;
     }

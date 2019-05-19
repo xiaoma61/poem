@@ -8,6 +8,19 @@
     <result column="ueser_id" jdbcType="INTEGER" property="ueserId" />
     <result column="read_record_id" jdbcType="INTEGER" property="readRecordId" />
   </resultMap>
+
+  <resultMap id="PoemReadRecordCommentDtoBaseResultMap" type="com.poetry.pojo.Dto.PoemReadRecordCommentDto">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="comment_content" jdbcType="VARCHAR" property="commentContent" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="user_id" jdbcType="INTEGER" property="ueserId" />
+    <result column="read_record_id" jdbcType="INTEGER" property="readRecordId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="avata_path" jdbcType="VARCHAR" property="avataPath" />
+
+  </resultMap>
+
+
   <sql id="Base_Column_List">
     id, comment_content, time, ueser_id, read_record_id
   </sql>
@@ -90,4 +103,13 @@
       read_record_id = #{readRecordId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+
+  <select id="listPoemReadRecordCommentDto" resultMap="PoemReadRecordCommentDtoBaseResultMap">
+    SELECT u.user_name,u.avata_path,u.id as user_id,rr.comment_content,rr.time,rr.read_record_id as read_record_id,rr.id as id
+ from read_record_comment rr
+LEFT JOIN `user` u on rr.ueser_id=u.id
+WHERE rr.read_record_id=#{0} GROUP BY rr.id
+
+  </select>
 </mapper>

@@ -42,6 +42,7 @@ public abstract class  BaseController <T>{
     protected int type_id=0;
     protected String id="";
     protected int poem_id=0;
+    protected int video_id=0;
 
 
 

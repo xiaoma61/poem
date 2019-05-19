@@ -69,7 +69,7 @@
     <result column="audio_path" jdbcType="VARCHAR" property="audioPath" />
     <result column="time" jdbcType="TIMESTAMP" property="time" />
     <result column="read_record_commentNum" jdbcType="INTEGER" property="read_record_commentNum" />
-
+    <result column="islike" jdbcType="INTEGER" property="isLike" />
   </resultMap>
 
 
@@ -246,11 +246,13 @@ WHERE poem.id=#{1};
 </select>
   <select id="listPoemReadRecordDtoResultMap" resultMap="PoemReadRecordDtoResultMap">
 SELECT read_record.id, read_record.time,read_record.audio_path,read_record.likes_num,u.avata_path,u.id as ueserId,u.user_name ,COUNT(DISTINCT read_record_comment.id) as read_record_commentNum
+, COUNT(DISTINCT rrl.id) as islike
 FROM
 poem
 LEFT JOIN read_record on poem.id=read_record.poem_id
 LEFT JOIN `user` u on u.id=read_record.ueser_id
 LEFT JOIN read_record_comment on read_record.id=read_record_comment.read_record_id
+LEFT JOIN read_record_like rrl on rrl.read_record_id=read_record.id and u.id=#{1}
 WHERE poem_id=#{0} GROUP BY read_record.id
 
 

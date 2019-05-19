@@ -95,8 +95,8 @@ public class PoemServiceImpl implements PoemService {
     }
 
     @Override
-    public List<PoemReadRecordDto> listPoemReadRecordDtoResultMap(int id) {
-        return poemMapper.listPoemReadRecordDtoResultMap(id);
+    public List<PoemReadRecordDto> listPoemReadRecordDtoResultMap(int id,String user_id) {
+        return poemMapper.listPoemReadRecordDtoResultMap(id,user_id);
     }
 
 
