@@ -1,32 +1,36 @@
 package com.poetry.web.controller.basecontroller;
 
 import com.poetry.service.*;
+import com.poetry.service.Impl.WXServicelmpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
+@Controller
 public abstract class  BaseController {
     @Autowired
-    protected
-    GroupService groupService;
+    public GroupService groupService;
     @Autowired
-    GroupUserService groupUserService;
+    public GroupUserService groupUserService;
     @Autowired
-    LikesCollectService likesCollectService;
+    public LikesCollectService likesCollectService;
     @Autowired
-    MatchQuestionService matchQuestionService;
+    public MatchQuestionService matchQuestionService;
     @Autowired
-    PoemPoemTypeService poemPoemTypeService;
+    public PoemPoemTypeService poemPoemTypeService;
     @Autowired
-    PoemService poemService;
+    public PoemService poemService;
     @Autowired
-    PoemTypeService poemTypeService;
+    public PoemTypeService poemTypeService;
     @Autowired
-    PostCommentService postCommentService;
+    public PostCommentService postCommentService;
     @Autowired
-    ReadRecordCommentService readRecordCommentService;
+    public ReadRecordCommentService readRecordCommentService;
     @Autowired
-    ReadRecordService readRecordService;
+    public ReadRecordService readRecordService;
     @Autowired
-    UserService ueserService;
+    public UserService userService;
+    @Autowired
+    public WXService wxService;
 
 
 

@@ -18,4 +18,9 @@ public interface GroupMapper {
     int updateByPrimaryKeySelective(groupDo record);
 
     int updateByPrimaryKey(groupDo record);
+
+    List<groupDo> selectAffiliationGroups(String userId);
+
+    List<groupDo> selectMyFoundingGroups(String userId);
+
 }

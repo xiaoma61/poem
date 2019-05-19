@@ -7,7 +7,7 @@
     <result column="group_intro" jdbcType="VARCHAR" property="groupIntro" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="creator_id" jdbcType="INTEGER" property="creatorId" />
+    <result column="creator_id" jdbcType="VARCHAR" property="creatorId" />
   </resultMap>
   <sql id="Base_Column_List">
     id, cover_path, group_intro, create_time, name, creator_id
@@ -22,12 +22,12 @@
     delete from groups
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.poetry.pojo.Do.groupDo">
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.poetry.pojo.Do.groupDo">
     insert into groups (id, cover_path, group_intro,
       create_time, name, creator_id
       )
     values (#{id,jdbcType=INTEGER}, #{coverPath,jdbcType=VARCHAR}, #{groupIntro,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{name,jdbcType=VARCHAR}, #{creatorId,jdbcType=INTEGER}
+      #{createTime,jdbcType=TIMESTAMP}, #{name,jdbcType=VARCHAR}, #{creatorId,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.poetry.pojo.Do.groupDo">
@@ -69,7 +69,7 @@
         #{name,jdbcType=VARCHAR},
       </if>
       <if test="creatorId != null">
-        #{creatorId,jdbcType=INTEGER},
+        #{creatorId,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -89,7 +89,7 @@
         name = #{name,jdbcType=VARCHAR},
       </if>
       <if test="creatorId != null">
-        creator_id = #{creatorId,jdbcType=INTEGER},
+        creator_id = #{creatorId,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -100,11 +100,20 @@
       group_intro = #{groupIntro,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       name = #{name,jdbcType=VARCHAR},
-      creator_id = #{creatorId,jdbcType=INTEGER}
+      creator_id = #{creatorId,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-  <select id="listGroupDo" resultMap="BaseResultMap">
+  <select id="listGroupDo" resultMap="BaseResultMap" parameterType="java.lang.String">
     select * from groups order by create_time desc
+  </select>
+
+  <select id="selectAffiliationGroups" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select * from groups where groups.id in
+    (select gu.group_id from group_user as gu where gu.ueser_id = #{userId,jdbcType=VARCHAR})
+  </select>
+
+  <select id="selectMyFoundingGroups" resultMap="BaseResultMap">
+    select * from groups where groups.creator_id=#{userId,jdbcType=VARCHAR}
   </select>
 </mapper>

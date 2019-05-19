@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.poetry.dao.userMapper">
+<mapper namespace="com.poetry.dao.UserMapper">
   <resultMap id="BaseResultMap" type="com.poetry.pojo.Do.userDo">
-    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="gold_coin_num" jdbcType="INTEGER" property="goldCoinNum" />
@@ -10,24 +10,26 @@
     <result column="sex" jdbcType="CHAR" property="sex" />
     <result column="avata_path" jdbcType="VARCHAR" property="avataPath" />
   </resultMap>
+
+
   <sql id="Base_Column_List">
     id, user_name, password, gold_coin_num, experience_val, sex, avata_path
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from user
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from user
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.poetry.pojo.Do.userDo">
     insert into user (id, user_name, password, 
       gold_coin_num, experience_val, sex, 
       avata_path)
-    values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
       #{goldCoinNum,jdbcType=INTEGER}, #{experienceVal,jdbcType=INTEGER}, #{sex,jdbcType=CHAR}, 
       #{avataPath,jdbcType=VARCHAR})
   </insert>
@@ -58,7 +60,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
-        #{id,jdbcType=INTEGER},
+        #{id,jdbcType=VARCHAR},
       </if>
       <if test="userName != null">
         #{userName,jdbcType=VARCHAR},
@@ -102,7 +104,7 @@
         avata_path = #{avataPath,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.poetry.pojo.Do.userDo">
     update user
@@ -112,6 +114,8 @@
       experience_val = #{experienceVal,jdbcType=INTEGER},
       sex = #{sex,jdbcType=CHAR},
       avata_path = #{avataPath,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
+
+
 </mapper>

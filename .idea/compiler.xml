@@ -14,5 +14,8 @@
         <module name="poetry.web" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="poetry (1)" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
