@@ -23,4 +23,8 @@ public interface GroupMapper {
 
     List<groupDo> selectMyFoundingGroups(String userId);
 
+    List<groupDo> selectByKeyWord(String keyWord);
+
+    int getGroupMemberNum(int groupId);
+
 }

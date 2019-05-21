@@ -1,5 +1,6 @@
 package com.poetry.service;
 
+import com.github.pagehelper.PageInfo;
 import com.poetry.pojo.Do.groupDo;
 
 import java.util.List;
@@ -10,14 +11,15 @@ public interface GroupService {
 
     List<groupDo> listGroupDo();
 
-    void craeteGroup(String creatorId,String groupName,String briefIntro,String coverPath);
+     void createGroup(String creatorId, String groupName, String briefIntro,String coverPath);
 
-    List<groupDo> searchByKeyValue(String keyVal);
+    PageInfo<groupDo> searchByKeyValue(String keyVal,String userId,int pageNum);
 
-    List<groupDo> getAffiliationGroups(String userId);
+    PageInfo<groupDo> getAffiliationGroups(String userId,int pageNum,int pageSize);
 
-    List<groupDo> getMyFoundingGroups(String userId);
+    PageInfo<groupDo> getMyFoundingGroups(String userId,int pageNum,int pageSize);
 
+    boolean DropOutGroup(String userId,int groupId);
 
 
 }

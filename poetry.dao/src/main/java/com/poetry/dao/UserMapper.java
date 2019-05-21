@@ -17,4 +17,6 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(userDo record);
 
     int updateByPrimaryKey(userDo record);
+
+    userDo selectLastReplyUser(int postId);
 }

@@ -1,13 +1,21 @@
 package com.poetry.web.controller.indexcontroller;
 
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageInfo;
 import com.poetry.commom.R;
+import com.poetry.pojo.Do.PostDo;
 import com.poetry.pojo.Do.groupDo;
+import com.poetry.pojo.Do.post_commentDo;
+import com.poetry.pojo.Dto.PostCommentDto;
+import com.poetry.service.PostService;
 import com.poetry.web.controller.basecontroller.BaseController;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.List;
 
 
@@ -19,11 +27,10 @@ public class GroupsController extends BaseController {
      * @return
      */
     @ResponseBody
-    @RequestMapping("/get/affiliation")
-    public R myAffiliationGroupsList(HttpServletRequest request){
+    @RequestMapping("/get/affiliation/{pageNum}")
+    public R myAffiliationGroupsList(HttpServletRequest request, @PathVariable int pageNum){
         String userId= (String) request.getAttribute("id");
-        System.out.println("GroupsController"+userId);
-        List<groupDo> resultList=groupService.getAffiliationGroups(userId);
+        PageInfo<groupDo> resultList=groupService.getAffiliationGroups(userId,pageNum,1);
         return R.ok(resultList);
     }
 
@@ -31,10 +38,10 @@ public class GroupsController extends BaseController {
      * 获得创建的小组列表
      */
     @ResponseBody
-    @RequestMapping(value = "/get/founding",method=RequestMethod.GET)
-    public R myCreateGroupsList(HttpServletRequest request){
+    @RequestMapping(value = "/get/founding/{pageNum}",method=RequestMethod.GET)
+    public R myCreateGroupsList(HttpServletRequest request, @PathVariable int pageNum){
         String userId= (String) request.getAttribute("id");
-        List<groupDo> resultList =groupService.getMyFoundingGroups(userId);
+        PageInfo<groupDo> resultList =groupService.getMyFoundingGroups(userId,pageNum,1);
         return R.ok(resultList);
     }
 
@@ -45,7 +52,7 @@ public class GroupsController extends BaseController {
     @RequestMapping(value = "/post/group",method = RequestMethod.POST)
     public R createGroup(HttpServletRequest request,@RequestParam String groupName,@RequestParam String briefIntro){
         String userId=(String)request.getAttribute("id");
-        groupService.craeteGroup(userId,groupName,briefIntro,"");
+        groupService.createGroup(userId,groupName,briefIntro,"");
         return R.ok();
     }
 
@@ -53,55 +60,65 @@ public class GroupsController extends BaseController {
      * 退出小组
      */
     @ResponseBody
-    @RequestMapping(value ="delete/groupsId",method=RequestMethod.GET)
-    public R QuitGroup(){
-        return R.ok();
+    @RequestMapping(value ="delete/group/{groupId}",method=RequestMethod.GET)
+    public R QuitGroup(HttpServletRequest request, @PathVariable int groupId){
+        String userId=(String)request.getAttribute("id");
+        boolean res=groupUserService.dropOutGroup(userId,groupId);
+        if (res)return R.ok();
+        return R.error();
     }
 
     /**
      * 搜索小组
      */
     @ResponseBody
-    @RequestMapping(value ="/q/{keyValue}",method=RequestMethod.GET)
-    public R searchGroups(@PathVariable String keyValue){
-
-        return R.ok();
+    @RequestMapping(value ="/q/{keyWord}/{pageNum}",method=RequestMethod.GET)
+    public R searchGroups(HttpServletRequest request, @PathVariable String keyWord, @PathVariable int pageNum){
+        String userId=(String)request.getAttribute("id");
+        if (StringUtils.isBlank(keyWord)){
+            return R.error("字符不能为空");
+        }
+        PageInfo<groupDo> result=groupService.searchByKeyValue(keyWord,userId,pageNum);
+        return R.ok(result);
     }
 
     /**
      * 帖子详情
      */
     @ResponseBody
-    @RequestMapping(value = "/get/{groupId}/posts/{postId",method=RequestMethod.GET)
+    @RequestMapping(value = "/get/{groupId}/posts/{postId}",method=RequestMethod.GET)
     public R postsDetail(@PathVariable int postId, @PathVariable String groupId){
-        return R.ok();
+        PostDo res =postService.getPostByPostId(postId);
+        return R.ok(res);
     }
 
     /**
      * 小组帖子列表
      */
     @ResponseBody
-    @RequestMapping(value = "/get/{groupId}/postsLst",method = RequestMethod.GET)
-    public R PostList(@PathVariable String groupId){
-return R.ok();
+    @RequestMapping(value = "/get/{groupId}/postsLst/{pageNum}",method = RequestMethod.GET)
+    public R PostList(@PathVariable int groupId, @PathVariable int pageNum){
+        PageInfo<PostDo> res=postService.getPostsByGroupId(groupId,pageNum, PostService.POSTS_PAGE_SIZE);
+        return R.ok(res);
     }
 
-    /**
-     * 帖子详情
-     */
-    @ResponseBody
-    @RequestMapping(value = "/get/{groupId}/posts/{postId}",method = RequestMethod.GET)
-    public R postDetail(@PathVariable int postId,@PathVariable int groupId){
-        return R.ok();
-    }
 
     /**
      * 发布帖子
      */
     @ResponseBody
     @RequestMapping(value = "/post/{groupId}",method = RequestMethod.POST)
-    public R post(@PathVariable String groupId){
-        return R.ok();
+    public R post(HttpServletRequest request,@PathVariable int groupId,@RequestParam String title,@RequestParam String postContent){
+        String userId= (String) request.getAttribute("id");
+        PostDo postDo=new PostDo();
+        postDo.setContent(postContent);
+        postDo.setGroupId(groupId);
+        postDo.setPosterId(userId);
+        postDo.setTitle(title);
+        postDo.setPostTime(new Date());
+        boolean res=postService.insertPost(postDo);
+        if (res)return R.ok();
+        return R.error();
     }
 
     /**
@@ -109,18 +126,38 @@ return R.ok();
      */
     @ResponseBody
     @RequestMapping(value = ("/post/{groupId}/posts/{postId}/comments"),method = RequestMethod.POST)
-    public R addComment(HttpServletRequest request,@PathVariable String groupId, @PathVariable String postId,@RequestParam String commentContent){
+    public R addComment(HttpServletRequest request,@PathVariable int groupId, @PathVariable int postId,@RequestParam String commentContent){
         String userId= (String) request.getAttribute("id");
-        return R.ok();
+        post_commentDo pc=new post_commentDo();
+        pc.setCommentContent(commentContent);
+        pc.setCommenterId(userId);
+        pc.setCommentPostTime(new Date());
+        pc.setPostId(postId);
+        boolean res=postCommentService.insertComment(pc);
+        if (res)return R.ok();
+        return R.error();
     }
 
     /**
      * 评论列表
      */
     @ResponseBody
-    @RequestMapping(value = "/get/{groupId}/posts/{postId}/comments",method = RequestMethod.GET)
-    public R postComments(@PathVariable String groupId, @PathVariable String postId){
-return R.ok();
+    @RequestMapping(value = "/get/{groupId}/posts/{postId}/comments/{pageNum}",method = RequestMethod.GET)
+    public R postComments(@PathVariable String groupId, @PathVariable int postId, @PathVariable int pageNum){
+        PageInfo<PostCommentDto> res=postCommentService.getCommentsByPostId(postId,pageNum, PostService.POSTS_PAGE_SIZE);
+        return R.ok(res);
+    }
+
+    /**
+     * 加入小组
+     */
+    @ResponseBody
+    @RequestMapping(value = "/get/{groupId}",method = RequestMethod.POST)
+    public R joinGroup(HttpServletRequest request, @PathVariable int groupId){
+        String userId= (String) request.getAttribute("id");
+        boolean res=groupUserService.joinGroup(userId,groupId);
+        if (res)return R.ok();
+        return R.error();
     }
 
 }

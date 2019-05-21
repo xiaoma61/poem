@@ -5,15 +5,15 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import java.util.Date;
 
 public class post_commentDo {
-    private Integer id;
+    protected Integer id;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private Date commentPostTime;
+    protected Date commentPostTime;
 
-    private String commentContent;
+    protected String commentContent;
 
-    private Integer commenterId;
+    protected String commenterId;
 
-    private Integer postId;
+    protected Integer postId;
 
     public Integer getId() {
         return id;
@@ -39,11 +39,11 @@ public class post_commentDo {
         this.commentContent = commentContent == null ? null : commentContent.trim();
     }
 
-    public Integer getCommenterId() {
+    public String getCommenterId() {
         return commenterId;
     }
 
-    public void setCommenterId(Integer commenterId) {
+    public void setCommenterId(String commenterId) {
         this.commenterId = commenterId;
     }
 

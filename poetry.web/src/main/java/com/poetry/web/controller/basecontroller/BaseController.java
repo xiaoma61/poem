@@ -31,6 +31,8 @@ public abstract class  BaseController {
     public UserService userService;
     @Autowired
     public WXService wxService;
+    @Autowired
+    public PostService postService;
 
 
 

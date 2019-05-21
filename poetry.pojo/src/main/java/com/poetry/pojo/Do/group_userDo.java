@@ -3,7 +3,7 @@ package com.poetry.pojo.Do;
 public class group_userDo {
     private Integer id;
 
-    private Integer ueserId;
+    private String ueserId;
 
     private Integer groupId;
 
@@ -15,11 +15,11 @@ public class group_userDo {
         this.id = id;
     }
 
-    public Integer getUeserId() {
+    public String getUeserId() {
         return ueserId;
     }
 
-    public void setUeserId(Integer ueserId) {
+    public void setUeserId(String ueserId) {
         this.ueserId = ueserId;
     }
 
