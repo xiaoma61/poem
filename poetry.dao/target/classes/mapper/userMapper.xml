@@ -117,5 +117,9 @@
     where id = #{id,jdbcType=VARCHAR}
   </update>
 
+  <select id="selectLastReplyUser" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select * from user where user.id in
+    (select commenter_id from (select * from post_comment  where post_id=#{postId,jdbcType=INTEGER} order by  comment_post_time desc limit 1) as  temp)
+  </select>
 
 </mapper>

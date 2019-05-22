@@ -33,6 +33,8 @@ public abstract class  BaseController {
     public WXService wxService;
     @Autowired
     public PostService postService;
+    @Autowired
+    public RankService rankService;
 
 
 
