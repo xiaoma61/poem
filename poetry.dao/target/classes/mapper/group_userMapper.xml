@@ -74,7 +74,7 @@
     where ueser_id = #{userId,jdbcType=VARCHAR} and group_id=#{groupId,jdbcType=INTEGER}
   </delete>
 
-  <select id="selectByUserIdAndGroupId" resultMap="BaseResultMap" parameterType="java.lang.String">
+  <select id="selectByUserIdAndGroupId" resultMap="BaseResultMap" >
     select * from group_user where  ueser_id = #{userId,jdbcType=VARCHAR} and group_id=#{groupId,jdbcType=INTEGER}
   </select>
 

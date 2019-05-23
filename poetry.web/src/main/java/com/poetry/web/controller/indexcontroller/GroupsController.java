@@ -1,7 +1,5 @@
 package com.poetry.web.controller.indexcontroller;
 
-
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
 import com.poetry.commom.R;
 import com.poetry.pojo.Do.PostDo;
@@ -16,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
-import java.util.List;
 
 
 @Controller
@@ -30,7 +27,7 @@ public class GroupsController extends BaseController {
     @RequestMapping("/get/affiliation/{pageNum}")
     public R myAffiliationGroupsList(HttpServletRequest request, @PathVariable int pageNum){
         String userId= (String) request.getAttribute("id");
-        PageInfo<groupDo> resultList=groupService.getAffiliationGroups(userId,pageNum,1);
+        PageInfo<groupDo> resultList=groupService.getAffiliationGroups(userId,pageNum,6);
         return R.ok(resultList);
     }
 
@@ -41,7 +38,7 @@ public class GroupsController extends BaseController {
     @RequestMapping(value = "/get/founding/{pageNum}",method=RequestMethod.GET)
     public R myCreateGroupsList(HttpServletRequest request, @PathVariable int pageNum){
         String userId= (String) request.getAttribute("id");
-        PageInfo<groupDo> resultList =groupService.getMyFoundingGroups(userId,pageNum,1);
+        PageInfo<groupDo> resultList =groupService.getMyFoundingGroups(userId,pageNum,6);
         return R.ok(resultList);
     }
 
@@ -85,12 +82,12 @@ public class GroupsController extends BaseController {
     /**
      * 帖子详情
      */
-    @ResponseBody
-    @RequestMapping(value = "/get/{groupId}/posts/{postId}",method=RequestMethod.GET)
-    public R postsDetail(@PathVariable int postId, @PathVariable String groupId){
-        PostDo res =postService.getPostByPostId(postId);
-        return R.ok(res);
-    }
+//    @ResponseBody
+//    @RequestMapping(value = "/get/{groupId}/posts/{postId}",method=RequestMethod.GET)
+//    public R postsDetail(@PathVariable int postId, @PathVariable String groupId){
+//        PostDo res =postService.getPostByPostId(postId);
+//        return R.ok(res);
+//    }
 
     /**
      * 小组帖子列表

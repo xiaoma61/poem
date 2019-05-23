@@ -123,7 +123,8 @@
   </select>
 
   <select id="selectByKeyWord" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select <include refid="Column_List_Without_userId" /> from groups where groups.name like #{keyWord,jdbcType=VARCHAR}
+    select <include refid="Column_List_Without_userId" />
+    from groups where groups.name like #{keyWord,jdbcType=VARCHAR}
   </select>
 
   <select id="getGroupMemberNum" parameterType="java.lang.Integer" resultType="java.lang.Integer">
