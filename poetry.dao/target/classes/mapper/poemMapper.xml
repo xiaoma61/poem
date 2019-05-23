@@ -246,23 +246,29 @@ WHERE pt.id=#{0}  GROUP BY p.id
   </select>
 
 <select id="getPoemLikeCollectionDto" resultMap="PoemLikeCollectionDtoResultMap">
-/*SELECT poem.id,poem.author,poem.dynasty,poem.poemcol,poem_appreciation,poem.poem_content,poem.poem_translation, likes_collect.type FROM poem
-LEFT JOIN likes_collect ON poem.id=likes_collect.poem_id and likes_collect.ueser_id=#{0}
-WHERE poem.id=#{1};*/
 
-SELECT p.id,p.author,p.dynasty,p.poemcol,p.poem_appreciation,p.poem_content,p.poem_translation, p.type ,lc.c as typeNum ,lc.type as typeNumName
+
+SELECT lc.pid as id,lc.author,lc.dynasty,lc.poemcol,lc.poem_appreciation,lc.poem_content,lc.poem_translation, p.type ,lc.c as typeNum ,lc.type as typeNumName
 FROM(
-SELECT COUNT(likes_collect.type)as c , likes_collect.poem_id, likes_collect.type ,id FROM likes_collect  WHERE poem_id=1 GROUP BY likes_collect.type
+SELECT p.id as pid ,p.author,p.dynasty,p.poemcol,p.poem_appreciation,p.poem_content,p.poem_translation,COUNT(likes_collect.type)as c , likes_collect.type ,likes_collect.poem_id as lcpoem_id
+FROM poem p
+LEFT JOIN likes_collect
+on   likes_collect.poem_id=p.id
+WHERE  p.id=#{1}
+GROUP BY likes_collect.type
 
 )lc LEFT  JOIN  (
 
-SELECT poem.id,poem.author,poem.dynasty,poem.poemcol,poem_appreciation,poem.poem_content,poem.poem_translation, likes_collect.type as type,likes_collect.id as likes_collect_id
-FROM poem
-LEFT JOIN likes_collect ON poem.id=likes_collect.poem_id and likes_collect.ueser_id=#{0}
-WHERE poem.id=#{1}
-)p on p.id=lc.poem_id AND p.likes_collect_id=lc.id
+SELECT likes_collect.poem_id as id, likes_collect.type as type,likes_collect.id as likes_collect_id
+FROM
+ likes_collect
+WHERE    likes_collect.ueser_id=#{0}
+)p on p.id=lc.pid AND p.type=lc.type
+GROUP BY lc.type
 
 </select>
+
+
   <select id="listPoemReadRecordDtoResultMap" resultMap="PoemReadRecordDtoResultMap">
 SELECT read_record.id, read_record.time,read_record.audio_path,read_record.likes_num,u.avata_path,u.id as ueserId,u.user_name ,COUNT(DISTINCT read_record_comment.id) as read_record_commentNum
 , COUNT(DISTINCT rrl.id) as islike
