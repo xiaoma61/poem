@@ -8,6 +8,7 @@ import com.poetry.web.controller.basecontroller.BaseController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.List;
 
@@ -26,15 +27,15 @@ public class PoemController extends BaseController {
      * @author myl
      * @date 2019/5/18
      * @param poemid
-     * @param id
      * @return [poemid, id]
      */
     @RequestMapping(value = "/{poemid}",method = RequestMethod.GET)
     @ResponseBody
-    public R getPoemLikeCollectionDto(@PathVariable("poemid")int poemid,@RequestParam("id")String id){
+    public R getPoemLikeCollectionDto(HttpServletRequest request,@PathVariable("poemid")int poemid){
 
 
-        return R.ok(poemService.getPoemLikeCollectionDto(id,poemid));
+
+        return R.ok(poemService.getPoemLikeCollectionDto(getOpenId(request),poemid));
     }
 
 
@@ -47,10 +48,10 @@ public class PoemController extends BaseController {
      */
     @RequestMapping(value = "/{poemid}/comment",method = RequestMethod.GET)
     @ResponseBody
-    public R getPoemCommentDto(@PathVariable("poemid")int id,@RequestParam(name = "start",defaultValue = "0")int start, @RequestParam(name = "rows",defaultValue = "10")int rows,@RequestParam(name = "user_id")String user_id){
+    public R getPoemCommentDto(HttpServletRequest request,@PathVariable("poemid")int id,@RequestParam(name = "start",defaultValue = "0")int start, @RequestParam(name = "rows",defaultValue = "10")int rows){
 
         this.poem_id=id;
-        this.id=user_id;
+        this.id=getOpenId(request);
         return R.ok(getPageInfo(start,rows,1));
     }
 
@@ -66,9 +67,10 @@ public class PoemController extends BaseController {
      */
     @RequestMapping(value = "/{poemid}/comment",method = RequestMethod.POST)
     @ResponseBody
-    public R postPoemComment(@PathVariable("poemid")int id, @RequestBody read_record_commentDo readRecordCommentDo){
+    public R postPoemComment(@PathVariable("poemid")int id, @RequestBody read_record_commentDo readRecordCommentDo,HttpServletRequest request){
 
         readRecordCommentDo.setTime(new Date());
+        readRecordCommentDo.setUeserId(getOpenId(request));
         readRecordCommentService.insert(readRecordCommentDo);
 
         return R.ok();
@@ -85,9 +87,10 @@ public class PoemController extends BaseController {
      */
     @RequestMapping(value = "/{poemid}/video",method = RequestMethod.POST)
     @ResponseBody
-    public R getPoemVideo(@PathVariable("poemid")int id,@RequestBody read_recordDo readRecordDo){
+    public R getPoemVideo(@PathVariable("poemid")int id,@RequestBody read_recordDo readRecordDo,HttpServletRequest request){
 
         readRecordDo.setTime(new Date());
+        readRecordDo.setUeserId(getOpenId(request));
         readRecordService.insert(readRecordDo);
         return R.ok();
     }
@@ -103,10 +106,11 @@ public class PoemController extends BaseController {
      */
     @RequestMapping(value = "/{id}/like",method = RequestMethod.POST)
     @ResponseBody
-    public R postPoemLike(@PathVariable("id")int id, @RequestParam("type")int type, @RequestBody likes_collectDo likesCollectDo){
+    public R postPoemLike(@PathVariable("id")int id, @RequestParam("type")int type, @RequestBody likes_collectDo likesCollectDo,HttpServletRequest request){
 
 
 
+        likesCollectDo.setUeserId(getOpenId(request));
         likesCollectService.like_collect(likesCollectDo,type,true);
         return R.ok();
     }
@@ -121,8 +125,10 @@ public class PoemController extends BaseController {
      */
     @RequestMapping(value = "/{id}/collect",method = RequestMethod.POST)
     @ResponseBody
-    public R postPoemCollect(@PathVariable("id")int id, @RequestParam("type")int type,@RequestBody likes_collectDo likesCollectDo){
+    public R postPoemCollect(@PathVariable("id")int id, @RequestParam("type")int type,@RequestBody likes_collectDo likesCollectDo,HttpServletRequest request){
+        likesCollectDo.setUeserId(getOpenId(request));
         likesCollectService.like_collect(likesCollectDo,type,false);
+
         return R.ok();
     }
 
@@ -136,9 +142,9 @@ public class PoemController extends BaseController {
      */
     @RequestMapping(value = "/{id}/video/{videoId}/like",method = RequestMethod.GET)
     @ResponseBody
-    public R postPoemVideoLike(@PathVariable("id")int id,@PathVariable("videoId")int videoId, @RequestParam("type")int type,@RequestParam(name = "user_id")String user_id){
+    public R postPoemVideoLike(@PathVariable("id")int id,@PathVariable("videoId")int videoId, @RequestParam("type")int type,HttpServletRequest request){
 
-        readRecordService.setLike(videoId,user_id,type);
+        readRecordService.setLike(videoId,getOpenId(request),type);
         return R.ok();
     }
 

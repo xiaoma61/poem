@@ -1,9 +1,9 @@
 package com.poetry.web.controller.poemcontroller;
 
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
+
+
 import com.poetry.commom.R;
-import com.poetry.pojo.Do.poem_typeDo;
+
 import com.poetry.web.controller.basecontroller.BaseController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;

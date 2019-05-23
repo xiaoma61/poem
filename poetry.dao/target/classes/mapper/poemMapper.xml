@@ -40,6 +40,11 @@
 
   </resultMap>
 
+  <resultMap id="LikeCollectionTypeBaseResultMap" type="com.poetry.pojo.Dto.LikeCollectionTypeDto">
+    <result column="typeNum" jdbcType="INTEGER" property="typeNum"></result>
+    <result column="typeNumName" jdbcType="VARCHAR" property="typeNumName"></result>
+  </resultMap>
+
   <resultMap id="LikesCollectionDtoResultMap" type="com.poetry.pojo.Dto.LikeCollectionDto">
     <result column="type" jdbcType="VARCHAR" property="type" />
   </resultMap>
@@ -56,6 +61,7 @@
     <result column="likeNum" jdbcType="INTEGER" property="likeNum" />
     <result column="readCommentNum" jdbcType="INTEGER" property="readCommentNum" />
     <collection property="types" resultMap="LikesCollectionDtoResultMap"></collection>
+    <collection property="typeDtos" resultMap="LikeCollectionTypeBaseResultMap"></collection>
 
   </resultMap>
 
@@ -240,9 +246,22 @@ WHERE pt.id=#{0}  GROUP BY p.id
   </select>
 
 <select id="getPoemLikeCollectionDto" resultMap="PoemLikeCollectionDtoResultMap">
-SELECT poem.id,poem.author,poem.dynasty,poem.poemcol,poem_appreciation,poem.poem_content,poem.poem_translation, likes_collect.type FROM poem
+/*SELECT poem.id,poem.author,poem.dynasty,poem.poemcol,poem_appreciation,poem.poem_content,poem.poem_translation, likes_collect.type FROM poem
 LEFT JOIN likes_collect ON poem.id=likes_collect.poem_id and likes_collect.ueser_id=#{0}
-WHERE poem.id=#{1};
+WHERE poem.id=#{1};*/
+
+SELECT p.id,p.author,p.dynasty,p.poemcol,p.poem_appreciation,p.poem_content,p.poem_translation, p.type ,lc.c as typeNum ,lc.type as typeNumName
+FROM(
+SELECT COUNT(likes_collect.type)as c , likes_collect.poem_id, likes_collect.type ,id FROM likes_collect  WHERE poem_id=1 GROUP BY likes_collect.type
+
+)lc LEFT  JOIN  (
+
+SELECT poem.id,poem.author,poem.dynasty,poem.poemcol,poem_appreciation,poem.poem_content,poem.poem_translation, likes_collect.type as type,likes_collect.id as likes_collect_id
+FROM poem
+LEFT JOIN likes_collect ON poem.id=likes_collect.poem_id and likes_collect.ueser_id=#{0}
+WHERE poem.id=#{1}
+)p on p.id=lc.poem_id AND p.likes_collect_id=lc.id
+
 </select>
   <select id="listPoemReadRecordDtoResultMap" resultMap="PoemReadRecordDtoResultMap">
 SELECT read_record.id, read_record.time,read_record.audio_path,read_record.likes_num,u.avata_path,u.id as ueserId,u.user_name ,COUNT(DISTINCT read_record_comment.id) as read_record_commentNum

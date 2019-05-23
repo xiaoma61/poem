@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="poetry.web:war exploded" />
+      <artifact name="poetry.web:war" />
     </artifacts-to-build>
   </component>
   <component name="AutomaticModuleUnloader">
@@ -47,71 +47,6 @@
     <expand />
     <select />
   </component>
-  <component name="DockManager">
-    <window id="5">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/poetry.dao/src/main/java/com/poetry/dao/LikesCollectMapper.java">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="380">
-                    <caret line="23" selection-start-line="23" selection-end-line="23" />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-    <window id="4">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/poetry.dao/src/main/resources/mapper/read_recordMapper.xml">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="336">
-                    <caret line="86" column="11" lean-forward="true" selection-start-line="86" selection-start-column="11" selection-end-line="86" selection-end-column="11" />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/poetry.dao/src/main/java/com/poetry/dao/ReadRecordMapper.java">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="413">
-                    <caret line="30" column="4" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="36" />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-    <window id="2">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/poetry.dao/src/main/resources/mapper/poemMapper.xml">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="363">
-                    <caret line="71" column="23" selection-start-line="71" selection-start-column="23" selection-end-line="71" selection-end-column="23" />
-                    <folding>
-                      <element signature="e#1#251#0" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-1302858169">
       <usages-collector id="statistics.lifecycle.project">
@@ -129,35 +64,35 @@
         <counts>
           <entry key="class" value="19" />
           <entry key="iml" value="5" />
-          <entry key="java" value="272" />
+          <entry key="java" value="279" />
           <entry key="jsp" value="1" />
           <entry key="properties" value="1" />
-          <entry key="xml" value="67" />
+          <entry key="xml" value="69" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="19" />
           <entry key="IDEA_MODULE" value="5" />
-          <entry key="JAVA" value="272" />
+          <entry key="JAVA" value="279" />
           <entry key="JSP" value="1" />
           <entry key="Properties" value="1" />
-          <entry key="XML" value="67" />
+          <entry key="XML" value="69" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="dummy" value="22" />
-          <entry key="java" value="6809" />
-          <entry key="xml" value="1472" />
+          <entry key="dummy" value="25" />
+          <entry key="java" value="6982" />
+          <entry key="xml" value="1514" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="6809" />
-          <entry key="PLAIN_TEXT" value="22" />
-          <entry key="SQL" value="17" />
-          <entry key="XML" value="1455" />
+          <entry key="JAVA" value="6982" />
+          <entry key="PLAIN_TEXT" value="25" />
+          <entry key="SQL" value="21" />
+          <entry key="XML" value="1493" />
         </counts>
       </usages-collector>
     </session>
@@ -165,19 +100,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/poetry.dao/src/main/java/com/poetry/dao/ReadRecordLikeMapper.java">
+        <entry file="file://$PROJECT_DIR$/poetry.web/src/main/java/com/poetry/web/controller/peoplecontroller/PeopleController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="4" column="39" lean-forward="true" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/poetry.web/src/main/java/com/poetry/web/controller/poemcontroller/PoemTypeController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="47" column="141" lean-forward="true" selection-start-line="47" selection-start-column="141" selection-end-line="47" selection-end-column="141" />
+            <state relative-caret-position="50">
+              <caret line="52" column="73" lean-forward="true" selection-start-line="52" selection-start-column="73" selection-end-line="52" selection-end-column="73" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -186,12 +112,88 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/poetry.web/src/main/java/com/poetry/web/controller/poemcontroller/PoemController.java">
+        <entry file="file://$PROJECT_DIR$/poetry.web/src/main/java/com/poetry/web/controller/poemcontroller/PoemTypeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
-              <caret line="137" column="17" lean-forward="true" selection-start-line="137" selection-start-column="17" selection-end-line="137" selection-end-column="17" />
+            <state relative-caret-position="-568">
+              <caret line="29" column="17" lean-forward="true" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="342">
+              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/poetry.web/src/main/java/com/poetry/web/controller/poemcontroller/PoemController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="342">
+              <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/poetry.dao/src/main/java/com/poetry/dao/PoemMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="406">
+              <caret line="57" column="46" selection-start-line="57" selection-start-column="46" selection-end-line="57" selection-end-column="46" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/poetry.dao/src/main/resources/mapper/poemMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="316">
+              <caret line="256" column="17" lean-forward="true" selection-start-line="256" selection-start-column="17" selection-end-line="256" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/poetry.pojo/src/main/java/com/poetry/pojo/Dto/PoemLikeCollectionDto.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="534">
+              <caret line="98" column="54" selection-start-line="98" selection-start-column="54" selection-end-line="98" selection-end-column="54" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2101#2102#0" expanded="true" />
+                <element signature="e#2170#2171#0" expanded="true" />
+                <element signature="e#2210#2211#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/poetry.pojo/src/main/java/com/poetry/pojo/Dto/LikeCollectionTypeDto.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="34" />
+              <folding>
+                <element signature="e#233#234#0" expanded="true" />
+                <element signature="e#263#264#0" expanded="true" />
+                <element signature="e#310#311#0" expanded="true" />
+                <element signature="e#348#349#0" expanded="true" />
+                <element signature="e#386#387#0" expanded="true" />
+                <element signature="e#420#421#0" expanded="true" />
+                <element signature="e#474#475#0" expanded="true" />
+                <element signature="e#520#521#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -200,8 +202,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/poetry.web/src/main/java/com/poetry/web/controller/poemcontroller/PoemSearchController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="49" column="30" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="36" />
+            <state relative-caret-position="121">
+              <caret line="65" column="21" lean-forward="true" selection-start-line="65" selection-start-column="21" selection-end-line="65" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -214,15 +216,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="95">
               <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/poetry.dao/src/main/resources/mapper/read_record_commentMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="38" lean-forward="true" selection-start-column="38" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -245,11 +238,13 @@
       <find>getPoem</find>
       <find>name</find>
       <find>PoemReadRecordDtoResultMap</find>
+      <find>id</find>
     </findStrings>
     <replaceStrings>
       <replace />
       <replace>poem</replace>
       <replace>value</replace>
+      <replace>getOpenId(request)</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -258,7 +253,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/poetry.dao/src/main/resources/mapper/poem_typeMapper.xml" />
         <option value="$PROJECT_DIR$/poetry.dao/pom.xml" />
         <option value="$PROJECT_DIR$/poetry.pojo/src/main/java/com/poetry/pojo/Dto/PoemDto.java" />
         <option value="$PROJECT_DIR$/poetry.web/src/main/java/com/poetry/constant/Constant.java" />
@@ -273,13 +267,10 @@
         <option value="$PROJECT_DIR$/poetry.pojo/src/main/java/com/poetry/pojo/Dto/PoemTypeNameDto.java" />
         <option value="$PROJECT_DIR$/poetry.pojo/src/main/java/com/poetry/pojo/Dto/PoemTypeDto.java" />
         <option value="$PROJECT_DIR$/poetry.commom/src/main/java/com/poetry/commom/constant/Constants.java" />
-        <option value="$PROJECT_DIR$/poetry.web/src/main/java/com/poetry/web/controller/poemcontroller/PoemSearchController.java" />
         <option value="$PROJECT_DIR$/poetry.dao/src/main/java/com/poetry/dao/redis/RedisUtil.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/poetry.service/pom.xml" />
-        <option value="$PROJECT_DIR$/poetry.web/src/main/java/com/poetry/web/controller/poemcontroller/PoemTypeController.java" />
         <option value="$PROJECT_DIR$/poetry.pojo/src/main/java/com/poetry/pojo/Dto/LikeCollectionDto.java" />
-        <option value="$PROJECT_DIR$/poetry.pojo/src/main/java/com/poetry/pojo/Dto/PoemLikeCollectionDto.java" />
         <option value="$PROJECT_DIR$/poetry.pojo/src/main/java/com/poetry/pojo/Dto/PoemReadRecord.java" />
         <option value="$PROJECT_DIR$/poetry.service/src/main/java/com/poetry/service/Impl/LikesCollectServiceImpl.java" />
         <option value="$PROJECT_DIR$/poetry.service/src/main/java/com/poetry/service/LikesCollectService.java" />
@@ -288,27 +279,31 @@
         <option value="$PROJECT_DIR$/poetry.dao/src/main/resources/mapper/read_recordMapper.xml" />
         <option value="$PROJECT_DIR$/poetry.service/src/main/java/com/poetry/service/PostService.java" />
         <option value="$PROJECT_DIR$/poetry.service/src/main/java/com/poetry/service/Impl/PostServiceImpl.java" />
-        <option value="$PROJECT_DIR$/poetry.web/src/main/java/com/poetry/web/controller/peoplecontroller/PeopleController.java" />
         <option value="$PROJECT_DIR$/poetry.dao/src/main/resources/mapper/likes_collectMapper.xml" />
         <option value="$PROJECT_DIR$/poetry.dao/src/main/java/com/poetry/dao/PoemMapper.java" />
         <option value="$PROJECT_DIR$/poetry.pojo/src/main/java/com/poetry/pojo/Dto/PoemReadRecordDto.java" />
         <option value="$PROJECT_DIR$/poetry.service/src/main/java/com/poetry/service/Impl/PoemServiceImpl.java" />
         <option value="$PROJECT_DIR$/poetry.service/src/main/java/com/poetry/service/PoemService.java" />
-        <option value="$PROJECT_DIR$/poetry.dao/src/main/resources/mapper/poemMapper.xml" />
         <option value="$PROJECT_DIR$/poetry.dao/src/main/resources/generatorConfig.xml" />
         <option value="$PROJECT_DIR$/poetry.pojo/src/main/java/com/poetry/pojo/Dto/PoemReadRecordCommentDto.java" />
         <option value="$PROJECT_DIR$/poetry.dao/src/main/java/com/poetry/dao/ReadRecordCommentMapper.java" />
         <option value="$PROJECT_DIR$/poetry.dao/src/main/resources/mapper/read_record_commentMapper.xml" />
         <option value="$PROJECT_DIR$/poetry.service/src/main/java/com/poetry/service/ReadRecordCommentService.java" />
         <option value="$PROJECT_DIR$/poetry.service/src/main/java/com/poetry/service/Impl/ReadRecordCommentServiceImpl.java" />
-        <option value="$PROJECT_DIR$/poetry.web/src/main/java/com/poetry/web/controller/basecontroller/BaseController.java" />
         <option value="$PROJECT_DIR$/poetry.service/src/main/java/com/poetry/service/ReadRecordService.java" />
         <option value="$PROJECT_DIR$/poetry.dao/src/main/resources/mapper/read_record_likeMapper.xml" />
         <option value="$PROJECT_DIR$/poetry.service/src/main/java/com/poetry/service/Impl/ReadRecordServiceImpl.java" />
         <option value="$PROJECT_DIR$/poetry.service/src/main/java/com/poetry/service/ReadRecordLikeService.java" />
         <option value="$PROJECT_DIR$/poetry.service/src/main/java/com/poetry/service/Impl/ReadRecordLikeServiceImpl.java" />
         <option value="$PROJECT_DIR$/poetry.dao/src/main/java/com/poetry/dao/ReadRecordLikeMapper.java" />
+        <option value="$PROJECT_DIR$/poetry.web/src/main/java/com/poetry/web/controller/basecontroller/BaseController.java" />
+        <option value="$PROJECT_DIR$/poetry.web/src/main/java/com/poetry/web/controller/poemcontroller/PoemTypeController.java" />
+        <option value="$PROJECT_DIR$/poetry.web/src/main/java/com/poetry/web/controller/poemcontroller/PoemSearchController.java" />
+        <option value="$PROJECT_DIR$/poetry.web/src/main/java/com/poetry/web/controller/peoplecontroller/PeopleController.java" />
         <option value="$PROJECT_DIR$/poetry.web/src/main/java/com/poetry/web/controller/poemcontroller/PoemController.java" />
+        <option value="$PROJECT_DIR$/poetry.pojo/src/main/java/com/poetry/pojo/Dto/LikeCollectionType.java" />
+        <option value="$PROJECT_DIR$/poetry.pojo/src/main/java/com/poetry/pojo/Dto/PoemLikeCollectionDto.java" />
+        <option value="$PROJECT_DIR$/poetry.dao/src/main/resources/mapper/poemMapper.xml" />
       </list>
     </option>
   </component>
@@ -348,15 +343,24 @@
           <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
           <item name="mybatis-generator" type="36feed69:MavenProjectsStructure$PluginNode" />
         </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="poetry.web Maven Webapp" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="poetry.web Maven Webapp" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
       </expand>
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="1349" />
-    <option name="y" value="49" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="1531" />
+    <option name="y" value="67" />
     <option name="width" value="1377" />
-    <option name="height" value="1052" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -380,41 +384,6 @@
             <path>
               <item name="poetry" type="b2602c69:ProjectViewProjectNode" />
               <item name="poetry" type="462c0819:PsiDirectoryNode" />
-              <item name="poetry.commom" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="poetry" type="b2602c69:ProjectViewProjectNode" />
-              <item name="poetry" type="462c0819:PsiDirectoryNode" />
-              <item name="poetry.commom" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="poetry" type="b2602c69:ProjectViewProjectNode" />
-              <item name="poetry" type="462c0819:PsiDirectoryNode" />
-              <item name="poetry.commom" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="poetry" type="b2602c69:ProjectViewProjectNode" />
-              <item name="poetry" type="462c0819:PsiDirectoryNode" />
-              <item name="poetry.commom" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="poetry" type="b2602c69:ProjectViewProjectNode" />
-              <item name="poetry" type="462c0819:PsiDirectoryNode" />
-              <item name="poetry.commom" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="commom" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="poetry" type="b2602c69:ProjectViewProjectNode" />
-              <item name="poetry" type="462c0819:PsiDirectoryNode" />
               <item name="poetry.dao" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -446,16 +415,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="dao" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="poetry" type="b2602c69:ProjectViewProjectNode" />
-              <item name="poetry" type="462c0819:PsiDirectoryNode" />
-              <item name="poetry.dao" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
-              <item name="redis" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="poetry" type="b2602c69:ProjectViewProjectNode" />
@@ -532,137 +491,7 @@
             <path>
               <item name="poetry" type="b2602c69:ProjectViewProjectNode" />
               <item name="poetry" type="462c0819:PsiDirectoryNode" />
-              <item name="poetry.service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="poetry" type="b2602c69:ProjectViewProjectNode" />
-              <item name="poetry" type="462c0819:PsiDirectoryNode" />
-              <item name="poetry.service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="poetry" type="b2602c69:ProjectViewProjectNode" />
-              <item name="poetry" type="462c0819:PsiDirectoryNode" />
-              <item name="poetry.service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="poetry" type="b2602c69:ProjectViewProjectNode" />
-              <item name="poetry" type="462c0819:PsiDirectoryNode" />
-              <item name="poetry.service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="poetry" type="b2602c69:ProjectViewProjectNode" />
-              <item name="poetry" type="462c0819:PsiDirectoryNode" />
-              <item name="poetry.service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="poetry" type="b2602c69:ProjectViewProjectNode" />
-              <item name="poetry" type="462c0819:PsiDirectoryNode" />
-              <item name="poetry.service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="Impl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="poetry" type="b2602c69:ProjectViewProjectNode" />
-              <item name="poetry" type="462c0819:PsiDirectoryNode" />
               <item name="poetry.web" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="poetry" type="b2602c69:ProjectViewProjectNode" />
-              <item name="poetry" type="462c0819:PsiDirectoryNode" />
-              <item name="poetry.web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="poetry" type="b2602c69:ProjectViewProjectNode" />
-              <item name="poetry" type="462c0819:PsiDirectoryNode" />
-              <item name="poetry.web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="poetry" type="b2602c69:ProjectViewProjectNode" />
-              <item name="poetry" type="462c0819:PsiDirectoryNode" />
-              <item name="poetry.web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="poetry" type="b2602c69:ProjectViewProjectNode" />
-              <item name="poetry" type="462c0819:PsiDirectoryNode" />
-              <item name="poetry.web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="poetry" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="poetry" type="b2602c69:ProjectViewProjectNode" />
-              <item name="poetry" type="462c0819:PsiDirectoryNode" />
-              <item name="poetry.web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="poetry" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="poetry" type="b2602c69:ProjectViewProjectNode" />
-              <item name="poetry" type="462c0819:PsiDirectoryNode" />
-              <item name="poetry.web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="poetry" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="basecontroller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="poetry" type="b2602c69:ProjectViewProjectNode" />
-              <item name="poetry" type="462c0819:PsiDirectoryNode" />
-              <item name="poetry.web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="poetry" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="peoplecontroller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="poetry" type="b2602c69:ProjectViewProjectNode" />
-              <item name="poetry" type="462c0819:PsiDirectoryNode" />
-              <item name="poetry.web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="poetry" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="peoplecontroller" type="462c0819:PsiDirectoryNode" />
-              <item name="PeopleController" type="1a9f42e2:ClassTreeNode" />
-            </path>
-            <path>
-              <item name="poetry" type="b2602c69:ProjectViewProjectNode" />
-              <item name="poetry" type="462c0819:PsiDirectoryNode" />
-              <item name="poetry.web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="poetry" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="poemcontroller" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -674,7 +503,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558189018778" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558603783342" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/poetry.web" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -796,12 +625,12 @@
       <workItem from="1557473919417" duration="21636000" />
       <workItem from="1557669140449" duration="1495000" />
       <workItem from="1557753194156" duration="8688000" />
-      <workItem from="1557924189939" duration="77273000" />
+      <workItem from="1557924189939" duration="85039000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="126458000" />
+    <option name="totallyTimeSpent" value="134224000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -813,10 +642,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1358" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="1358" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.077292114" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15724947" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -826,7 +655,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.36638454" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.22149837" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.22149837" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.36916396" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -844,7 +673,7 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Maven Projects" order="5" visible="true" weight="0.21002132" />
+      <window_info anchor="right" id="Maven Projects" order="5" visible="true" weight="0.04957356" />
       <window_info anchor="right" id="Database" order="6" weight="0.32995737" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
@@ -903,52 +732,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/poetry.web/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-513">
-          <caret line="97" selection-start-line="97" selection-end-line="97" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/poetry.service/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.0.RELEASE/spring-webmvc-4.3.0.RELEASE.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestMappingHandlerMapping.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/poetry.pojo/src/main/java/com/poetry/pojo/Dto/PoemDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="20" lean-forward="true" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="20" />
-          <folding>
-            <element signature="e#1248#1249#0" expanded="true" />
-            <element signature="e#1285#1286#0" expanded="true" />
-            <element signature="e#1342#1343#0" expanded="true" />
-            <element signature="e#1394#1395#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/poetry.pojo/src/main/java/com/poetry/pojo/Dto/PoemLikeCollectionDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="943">
-          <caret line="96" selection-start-line="96" selection-end-line="96" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#437#438#0" expanded="true" />
-            <element signature="e#465#466#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/poetry.pojo/src/main/java/com/poetry/pojo/Do/poemDo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="439">
@@ -1015,20 +798,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="57">
           <caret line="3" column="1" lean-forward="true" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/poetry.web/src/main/java/com/poetry/web/controller/peoplecontroller/PeopleController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="115" lean-forward="true" selection-start-line="115" selection-end-line="115" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#getPeople#0;class#PeopleController#0" />
-            <element signature="method#getPeopleById#0;class#PeopleController#0" />
-            <element signature="docComment;method#postRegister#0;class#PeopleController#0" />
-            <element signature="docComment;method#getRegister#0;class#PeopleController#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1130,26 +899,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
           <caret line="86" column="11" lean-forward="true" selection-start-line="86" selection-start-column="11" selection-end-line="86" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/poetry.dao/src/main/resources/mapper/poemMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="71" column="23" selection-start-line="71" selection-start-column="23" selection-end-line="71" selection-end-column="23" />
-          <folding>
-            <element signature="e#1#251#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/poetry.dao/src/main/java/com/poetry/dao/PoemMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="45" column="7" lean-forward="true" selection-start-line="45" selection-start-column="7" selection-end-line="45" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1282,27 +1031,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/poetry.web/src/main/java/com/poetry/web/controller/basecontroller/BaseController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="44" column="25" selection-start-line="44" selection-start-column="25" selection-end-line="44" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/poetry.dao/src/main/resources/mapper/read_record_commentMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="38" lean-forward="true" selection-start-column="38" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/poetry.service/src/main/java/com/poetry/service/Impl/PostCommentServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1355,27 +1087,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/poetry.dao/src/main/java/com/poetry/dao/ReadRecordLikeMapper.java">
+    <entry file="file://$PROJECT_DIR$/poetry.dao/src/main/java/com/poetry/dao/redis/redisConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="39" lean-forward="true" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
+        <state relative-caret-position="249">
+          <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+          <folding>
+            <element signature="e#663#664#0" expanded="true" />
+            <element signature="e#702#703#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/poetry.web/src/main/java/com/poetry/web/controller/poemcontroller/PoemController.java">
+    <entry file="file://$PROJECT_DIR$/poetry.dao/src/main/java/com/poetry/dao/redis/RedisUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="137" column="17" lean-forward="true" selection-start-line="137" selection-start-column="17" selection-end-line="137" selection-end-column="17" />
+        <state relative-caret-position="467">
+          <caret line="117" column="9" lean-forward="true" selection-start-line="117" selection-start-column="9" selection-end-line="117" selection-end-column="9" />
+          <folding>
+            <element signature="method#hasKey#0;class#RedisUtil#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/poetry.web/src/main/java/com/poetry/web/controller/basecontroller/BaseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="67">
+          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/poetry.web/src/main/java/com/poetry/web/controller/poemcontroller/PoemSearchController.java">
+    <entry file="file://$PROJECT_DIR$/poetry.service/src/main/java/com/poetry/service/Impl/PostCommentServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="49" column="30" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="36" />
+        <state relative-caret-position="95">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/poetry.dao/src/main/java/com/poetry/dao/ReadRecordLikeMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/poetry.web/src/main/java/com/poetry/web/controller/peoplecontroller/PeopleController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="52" column="73" lean-forward="true" selection-start-line="52" selection-start-column="73" selection-end-line="52" selection-end-column="73" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1384,11 +1151,78 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/poetry.web/src/main/java/com/poetry/web/controller/poemcontroller/PoemTypeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="47" column="141" lean-forward="true" selection-start-line="47" selection-start-column="141" selection-end-line="47" selection-end-column="141" />
+        <state relative-caret-position="-568">
+          <caret line="29" column="17" lean-forward="true" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/poetry.web/src/main/java/com/poetry/web/controller/poemcontroller/PoemSearchController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="65" column="21" lean-forward="true" selection-start-line="65" selection-start-column="21" selection-end-line="65" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/poetry.web/src/main/java/com/poetry/web/controller/poemcontroller/PoemController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/poetry.pojo/src/main/java/com/poetry/pojo/Dto/LikeCollectionTypeDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="34" />
+          <folding>
+            <element signature="e#233#234#0" expanded="true" />
+            <element signature="e#263#264#0" expanded="true" />
+            <element signature="e#310#311#0" expanded="true" />
+            <element signature="e#348#349#0" expanded="true" />
+            <element signature="e#386#387#0" expanded="true" />
+            <element signature="e#420#421#0" expanded="true" />
+            <element signature="e#474#475#0" expanded="true" />
+            <element signature="e#520#521#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/poetry.dao/src/main/java/com/poetry/dao/PoemMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="57" column="46" selection-start-line="57" selection-start-column="46" selection-end-line="57" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/poetry.pojo/src/main/java/com/poetry/pojo/Dto/PoemLikeCollectionDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="534">
+          <caret line="98" column="54" selection-start-line="98" selection-start-column="54" selection-end-line="98" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2101#2102#0" expanded="true" />
+            <element signature="e#2170#2171#0" expanded="true" />
+            <element signature="e#2210#2211#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/poetry.dao/src/main/resources/mapper/poemMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="256" column="17" lean-forward="true" selection-start-line="256" selection-start-column="17" selection-end-line="256" selection-end-column="17" />
         </state>
       </provider>
     </entry>

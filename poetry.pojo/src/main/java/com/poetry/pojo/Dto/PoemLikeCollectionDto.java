@@ -14,6 +14,7 @@ public class PoemLikeCollectionDto {
 
 
     private List<LikeCollectionDto>types;
+    private List<LikeCollectionTypeDto>typeDtos;
 
 
 
@@ -95,4 +96,11 @@ public class PoemLikeCollectionDto {
         this.poemcol = poemcol == null ? null : poemcol.trim();
     }
 
+    public List<LikeCollectionTypeDto> getTypeDtos() {
+        return typeDtos;
+    }
+
+    public void setTypeDtos(List<LikeCollectionTypeDto> typeDtos) {
+        this.typeDtos = typeDtos;
+    }
 }

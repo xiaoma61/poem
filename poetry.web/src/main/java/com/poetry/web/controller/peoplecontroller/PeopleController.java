@@ -32,11 +32,11 @@ public class PeopleController extends BaseController {
      * @param
      * @return  R 等级，金币
      */
-    @RequestMapping(value = "/{Id}", method = RequestMethod.GET)
+    @RequestMapping( method = RequestMethod.GET)
     @ResponseBody()
-    public R getPeople(HttpServletRequest request,@PathVariable(value = "Id")String id){
+    public R getPeople(HttpServletRequest request){
 
-        return R.ok(ueserService.getPeopleDtobyId(id));
+        return R.ok(ueserService.getPeopleDtobyId(getOpenId(request)));
     }
 
     /**
@@ -46,11 +46,11 @@ public class PeopleController extends BaseController {
      * @param request
      * @return 个人中心详细信息有 连胜纪录，等级
      */
-    @RequestMapping(value = "/{Id}/detail", method = RequestMethod.GET)
+    @RequestMapping(value = "/detail", method = RequestMethod.GET)
     @ResponseBody()
-    public R getPeopleById(HttpServletRequest request,@PathVariable(value = "Id")String id){
+    public R getPeopleById(HttpServletRequest request){
 
-        return R.ok(ueserService.getPeopleDetailDto(id));
+        return R.ok(ueserService.getPeopleDetailDto(getOpenId(request)));
     }
 
     /**
@@ -63,9 +63,9 @@ public class PeopleController extends BaseController {
      * @param like_collect 1,为点赞 2.为收藏
      * @return [request, start, rows, like_collect]
      */
-    @RequestMapping(value = "/{Id}/like_collect/type/{type}",method = RequestMethod.GET)
+    @RequestMapping(value = "/like_collect/type/{type}",method = RequestMethod.GET)
     @ResponseBody()
-    public R getLike_collect(HttpServletRequest request,@RequestParam(name = "start",defaultValue = "0")int start,@RequestParam(name = "rows",defaultValue = "10")int rows,@PathVariable(value = "type")int like_collect,@PathVariable(value = "Id")String id){
+    public R getLike_collect(HttpServletRequest request,@RequestParam(name = "start",defaultValue = "0")int start,@RequestParam(name = "rows",defaultValue = "10")int rows,@PathVariable(value = "type")int like_collect){
         PageHelper.startPage(start,rows);
 
         String type="";
@@ -75,7 +75,7 @@ public class PeopleController extends BaseController {
         }else {
             type=COLLECTION;
         }
-        this.id=id;
+        this.id=getOpenId(request);
         mtype=type;
 
         /*List<Likes_CollectionDto>collectionDtos=likesCollectService.listLikes_CollectionDto(id,type);
@@ -92,12 +92,12 @@ public class PeopleController extends BaseController {
      * @param rows
      * @return [request, start, rows]
      */
-    @RequestMapping(value = "/{Id}/creategroup",method = RequestMethod.GET)
+    @RequestMapping(value = "/creategroup",method = RequestMethod.GET)
     @ResponseBody()
-    public R getCreateGroup(HttpServletRequest request,@RequestParam(name = "start",defaultValue = "0")int start,@RequestParam(name = "rows",defaultValue = "10")int rows,@PathVariable(value = "Id")String id){
+    public R getCreateGroup(HttpServletRequest request,@RequestParam(name = "start",defaultValue = "0")int start,@RequestParam(name = "rows",defaultValue = "10")int rows){
         PageHelper.startPage(start,rows);
        /* String Creator_Id=id;*/
-        this.id=id;
+        this.id=getOpenId(request);
        /* List<GreateGroupsDto>collectionDtos=groupService.listGreateGroupsDtoByCreator_Id(Creator_Id);
         PageInfo<GreateGroupsDto>pageInfo=new PageInfo<>(collectionDtos);*/
         return R.ok( getPageInfo(start,rows,2));
@@ -110,11 +110,11 @@ public class PeopleController extends BaseController {
      * @param request
      * @return [request, start, rows]
      */
-    @RequestMapping(value = "/{Id}/statistics",method = RequestMethod.GET)
+    @RequestMapping(value = "/statistics",method = RequestMethod.GET)
     @ResponseBody()
-    public R getStatistics(HttpServletRequest request,@PathVariable(value = "Id")String id){
+    public R getStatistics(HttpServletRequest request){
 
-        return R.ok(ueserService.listPeopleStatisticsDto(id));
+        return R.ok(ueserService.listPeopleStatisticsDto(getOpenId(request)));
     }
 
 
@@ -123,14 +123,14 @@ public class PeopleController extends BaseController {
      * @author myl
      * @date 2019/5/14
      * @param request
-     * @param id
      * @param readRecordDo
      * @return [request, id, readRecordDo]
      */
-    @RequestMapping(value = "/{Id}/register",method = RequestMethod.POST)
+    @RequestMapping(value = "/register",method = RequestMethod.POST)
     @ResponseBody()
-    public R postRegister(HttpServletRequest request, @PathVariable(value = "Id")String id, @RequestBody read_recordDo readRecordDo){
+    public R postRegister(HttpServletRequest request, @RequestBody read_recordDo readRecordDo){
         //更新个人信息的金币数和等级
+        readRecordDo.setUeserId(getOpenId(request));
         return R.ok(readRecordService.register(readRecordDo, Constants.GOLD_COIN_NUM_REGISTER));
     }
 
@@ -144,10 +144,10 @@ public class PeopleController extends BaseController {
      * @param id
      * @return [request, id]
      */
-    @RequestMapping(value = "/{Id}/register",method = RequestMethod.GET)
+    @RequestMapping(value = "/register",method = RequestMethod.GET)
     @ResponseBody()
-    public R getRegister(HttpServletRequest request, @PathVariable(value = "Id")String id){
-        //更新个人信息的金币数和等级
+    public R getRegister(HttpServletRequest request ){
+
         return R.ok(poemService.getPeopleRegisterDto());
     }
 

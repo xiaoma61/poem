@@ -49,8 +49,8 @@ public abstract class  BaseController <T>{
 
     public String  getOpenId(HttpServletRequest request){
         HttpSession session=request.getSession();
-        String id= (String) session.getAttribute("openid");
-        return "1";
+        String id= (String) session.getAttribute("id");
+        return id;
     }
 
     public  PageInfo<T> pageInfo;

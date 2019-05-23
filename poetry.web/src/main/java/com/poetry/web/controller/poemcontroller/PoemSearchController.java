@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 import static com.poetry.commom.constant.Constants.LIKE;
@@ -44,19 +45,30 @@ public class PoemSearchController extends BaseController {
      * @description 最近查询
      * @author myl
      * @date 2019/5/17
-     * @param id
+     *
      * @return [id]
      */
     @RequestMapping(value = "/recent",method = RequestMethod.GET)
     @ResponseBody
-    public R getRecentSearch(@RequestParam(name = "id")String id){
+    public R getRecentSearch(HttpServletRequest request){
 
-        return poemService.getRecentSearch(id);
+        return poemService.getRecentSearch(getOpenId(request));
     }
 
+    /**
+     * @description 热门查询
+     * @author myl
+     * @date 2019/5/20
+     * @param q
+     * @param start
+     * @param rows
+     * @param id
+     * @param request
+     * @return [q, start, rows, id, request]
+     */
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-    public R getSearch(@RequestParam(name = "q")String q,@RequestParam(name = "start",defaultValue = "0")int start, @RequestParam(name = "rows",defaultValue = "10")int rows,@RequestParam(name = "id")String id){
+    public R getSearch(@RequestParam(name = "q")String q, @RequestParam(name = "start",defaultValue = "0")int start, @RequestParam(name = "rows",defaultValue = "10")int rows, @RequestParam(name = "id")String id, HttpServletRequest request){
 
         this.q=q;
         mtype=LIKE;
