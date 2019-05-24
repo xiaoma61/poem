@@ -3,9 +3,12 @@
 <mapper namespace="com.poetry.dao.GroupUserMapper">
   <resultMap id="BaseResultMap" type="com.poetry.pojo.Do.group_userDo">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="ueser_id" jdbcType="INTEGER" property="ueserId" />
+    <result column="ueser_id" jdbcType="VARCHAR" property="ueserId" />
     <result column="group_id" jdbcType="INTEGER" property="groupId" />
   </resultMap>
+
+
+
   <sql id="Base_Column_List">
     id, ueser_id, group_id
   </sql>
@@ -19,10 +22,10 @@
     delete from group_user
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.poetry.pojo.Do.group_userDo">
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.poetry.pojo.Do.group_userDo">
     insert into group_user (id, ueser_id, group_id
       )
-    values (#{id,jdbcType=INTEGER}, #{ueserId,jdbcType=INTEGER}, #{groupId,jdbcType=INTEGER}
+    values (#{id,jdbcType=INTEGER}, #{ueserId,jdbcType=VARCHAR}, #{groupId,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.poetry.pojo.Do.group_userDo">
@@ -43,7 +46,7 @@
         #{id,jdbcType=INTEGER},
       </if>
       <if test="ueserId != null">
-        #{ueserId,jdbcType=INTEGER},
+        #{ueserId,jdbcType=VARCHAR},
       </if>
       <if test="groupId != null">
         #{groupId,jdbcType=INTEGER},
@@ -54,7 +57,7 @@
     update group_user
     <set>
       <if test="ueserId != null">
-        ueser_id = #{ueserId,jdbcType=INTEGER},
+        ueser_id = #{ueserId,jdbcType=VARCHAR},
       </if>
       <if test="groupId != null">
         group_id = #{groupId,jdbcType=INTEGER},
@@ -64,8 +67,19 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.poetry.pojo.Do.group_userDo">
     update group_user
-    set ueser_id = #{ueserId,jdbcType=INTEGER},
+    set ueser_id = #{ueserId,jdbcType=VARCHAR},
       group_id = #{groupId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <delete id="deleteByUserIdAndGroupId" >
+        delete from group_user
+    where ueser_id = #{userId,jdbcType=VARCHAR} and group_id=#{groupId,jdbcType=INTEGER}
+  </delete>
+
+  <select id="selectByUserIdAndGroupId" resultMap="BaseResultMap" >
+    select * from group_user where  ueser_id = #{userId,jdbcType=VARCHAR} and group_id=#{groupId,jdbcType=INTEGER}
+  </select>
+
+
 </mapper>

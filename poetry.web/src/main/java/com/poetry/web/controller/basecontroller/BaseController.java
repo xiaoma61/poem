@@ -34,7 +34,12 @@ public abstract class  BaseController <T>{
     protected ReadRecordService readRecordService;
     @Autowired
     protected UserService ueserService;
-
+    @Autowired
+    public WXService wxService;
+    @Autowired
+    public PostService postService;
+    @Autowired
+    public RankService rankService;
 
 
     protected  String q="";
@@ -48,9 +53,8 @@ public abstract class  BaseController <T>{
 
 
     public String  getOpenId(HttpServletRequest request){
-        HttpSession session=request.getSession();
-        String id= (String) session.getAttribute("id");
-        return id;
+        String userId= (String) request.getAttribute("id");
+        return userId;
     }
 
     public  PageInfo<T> pageInfo;

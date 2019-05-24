@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * @author myl
- * @description诗集--诗词评论页面
+ * @description 诗集--诗词评论页面
  * @date 2019/5/17
  */
 @Controller
@@ -108,8 +108,6 @@ public class PoemController extends BaseController {
     @ResponseBody
     public R postPoemLike(@PathVariable("id")int id, @RequestParam("type")int type, @RequestBody likes_collectDo likesCollectDo,HttpServletRequest request){
 
-
-
         likesCollectDo.setUeserId(getOpenId(request));
         likesCollectService.like_collect(likesCollectDo,type,true);
         return R.ok();
@@ -143,16 +141,27 @@ public class PoemController extends BaseController {
     @RequestMapping(value = "/{id}/video/{videoId}/like",method = RequestMethod.GET)
     @ResponseBody
     public R postPoemVideoLike(@PathVariable("id")int id,@PathVariable("videoId")int videoId, @RequestParam("type")int type,HttpServletRequest request){
-
+        rankService.addLike(videoId);
         readRecordService.setLike(videoId,getOpenId(request),type);
         return R.ok();
     }
 
+    /**
+     * @description    音频的评论
+     * @author myl
+     * @date 2019/5/24
+     * @param id
+     * @param videoId
+     * @param start
+     * @param rows
+     * @return [id, videoId, start, rows]
+     */
     @RequestMapping(value = "/{id}/video/{videoId}/comment",method = RequestMethod.GET)
     @ResponseBody
-    // TODO: 2019/5/17 音频的评论
+
     public R postPoemVideoComment(@PathVariable("id")int id,@PathVariable("videoId")int videoId, @RequestParam(name = "start",defaultValue = "0")int start, @RequestParam(name = "rows",defaultValue = "10")int rows){
 
+        rankService.addComment(videoId);
         video_id=videoId;
         return R.ok(getPageInfo(start,rows,2));
     }

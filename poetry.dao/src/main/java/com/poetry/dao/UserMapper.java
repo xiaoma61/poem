@@ -9,6 +9,7 @@ import java.util.List;
 
 
 public interface UserMapper {
+
     int deleteByPrimaryKey(String id);
 
     int insert(userDo record);
@@ -21,13 +22,16 @@ public interface UserMapper {
 
     int updateByPrimaryKey(userDo record);
 
+
     PeopleDto getPeopleDtobyId(String id);
 
     PeopleDetailDto getPeopleDetailDto(String id);
 
     List<PeopleStatisticsDto> listPeopleStatisticsDto(String id);
 
-    int updateUserbyid(String id,int gold_coin_num);
+    int updateUserbyid(String id, int gold_coin_num);
 
+
+    userDo selectLastReplyUser(int postId);
 
 }

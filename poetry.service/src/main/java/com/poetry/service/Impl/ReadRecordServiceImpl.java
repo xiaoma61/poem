@@ -53,10 +53,9 @@ public class ReadRecordServiceImpl implements ReadRecordService {
 
     @Override
     public void setLike(int id, String user_id,int type) {
+        readRecordLikeService.deleteByReadRecordIdAndUserId(id,user_id);
         if (type==1){
             //添加
-
-
             read_record_likeDo record=new read_record_likeDo();
             record.setReadRecordId(id);
             record.setUserId(user_id);
@@ -65,8 +64,6 @@ public class ReadRecordServiceImpl implements ReadRecordService {
         }else {
 
             //删除
-            readRecordLikeService.deleteByReadRecordIdAndUserId(id,user_id);
-
             updateLikeNumsById(id);
         }
 

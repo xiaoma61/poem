@@ -334,8 +334,28 @@
         <version>1.7.1.RELEASE</version>
       </dependency>
 
+    <!--  <dependency>
+        <groupId>org.bouncycastle</groupId>
+        <artifactId>bcprov-jdk15on</artifactId>
+        <version>1.54</version>
+        <scope>compile</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.bouncycastle</groupId>
+        <artifactId>bcprov-jdk16</artifactId>
+        <version>1.45</version>
+      </dependency>-->
+      <dependency>
+        <groupId>com.auth0</groupId>
+        <artifactId>java-jwt</artifactId>
+        <version>3.1.0</version>
+      </dependency>
 
-
+      <dependency>
+        <groupId>io.jsonwebtoken</groupId>
+        <artifactId>jjwt</artifactId>
+        <version>0.7.0</version>
+      </dependency>
   </dependencies>
 
 

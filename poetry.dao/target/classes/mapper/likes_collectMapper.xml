@@ -38,6 +38,7 @@
       poem_id)
     values (#{id,jdbcType=INTEGER}, #{type,jdbcType=CHAR}, #{ueserId,jdbcType=INTEGER}, 
       #{poemId,jdbcType=INTEGER})
+
   </insert>
   <insert id="insertSelective" parameterType="com.poetry.pojo.Do.likes_collectDo">
     insert into likes_collect

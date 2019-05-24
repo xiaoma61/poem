@@ -1,6 +1,9 @@
+
 package com.poetry.dao;
 
 import com.poetry.pojo.Do.PostDo;
+
+import java.util.List;
 
 public interface PostMapper {
     int deleteByPrimaryKey(Integer id);
@@ -14,4 +17,8 @@ public interface PostMapper {
     int updateByPrimaryKeySelective(PostDo record);
 
     int updateByPrimaryKey(PostDo record);
+
+    List<PostDo> selectByGroupId(int groupId);
+
+
 }

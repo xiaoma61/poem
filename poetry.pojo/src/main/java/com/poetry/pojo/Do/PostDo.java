@@ -1,17 +1,37 @@
+
 package com.poetry.pojo.Do;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
+
 
 public class PostDo {
     private Integer id;
 
     private String title;
-
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date postTime;
 
     private String posterId;
 
     private String content;
+
+    private int groupId;
+
+    private String lastReplyUser;
+
+    private String lastReplyUserAvator;
+
+    private int ReliesNum;
+
+    public int getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(int groupId) {
+        this.groupId = groupId;
+    }
 
     public Integer getId() {
         return id;
@@ -52,4 +72,29 @@ public class PostDo {
     public void setContent(String content) {
         this.content = content == null ? null : content.trim();
     }
+
+    public String getLastReplyUser() {
+        return lastReplyUser;
+    }
+
+    public void setLastReplyUser(String lastReplyUser) {
+        this.lastReplyUser = lastReplyUser;
+    }
+
+    public String getLastReplyUserAvator() {
+        return lastReplyUserAvator;
+    }
+
+    public void setLastReplyUserAvator(String lastReplyUserAvator) {
+        this.lastReplyUserAvator = lastReplyUserAvator;
+    }
+
+    public int getReliesNum() {
+        return ReliesNum;
+    }
+
+    public void setReliesNum(int reliesNum) {
+        ReliesNum = reliesNum;
+    }
+
 }

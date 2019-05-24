@@ -1,7 +1,5 @@
 package com.poetry.pojo.Dto;
 
-import com.poetry.pojo.Do.poemDo;
-
 import java.util.List;
 
 /**

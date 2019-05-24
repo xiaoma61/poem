@@ -52,27 +52,26 @@ public class PoemSearchController extends BaseController {
     @ResponseBody
     public R getRecentSearch(HttpServletRequest request){
 
-        return poemService.getRecentSearch(getOpenId(request));
+        return R.ok(poemService.getRecentSearch(getOpenId(request)));
     }
 
     /**
-     * @description 热门查询
+     * @description 关键词查询内容
      * @author myl
      * @date 2019/5/20
      * @param q
      * @param start
      * @param rows
-     * @param id
      * @param request
      * @return [q, start, rows, id, request]
      */
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-    public R getSearch(@RequestParam(name = "q")String q, @RequestParam(name = "start",defaultValue = "0")int start, @RequestParam(name = "rows",defaultValue = "10")int rows, @RequestParam(name = "id")String id, HttpServletRequest request){
+    public R getSearch(@RequestParam(name = "q")String q, @RequestParam(name = "start",defaultValue = "0")int start, @RequestParam(name = "rows",defaultValue = "10")int rows, HttpServletRequest request){
 
         this.q=q;
         mtype=LIKE;
-        poemService.recordSearch(q, id);
+        poemService.recordSearch(q, getOpenId(request));
         return R.ok( getPageInfo( start,rows,1 ) );
     }
 

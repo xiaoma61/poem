@@ -22,7 +22,7 @@
         <!--驱动类名 -->
         <property name="driverClass" value="com.mysql.jdbc.Driver" />
         <!-- url -->
-        <property name="jdbcUrl" value="jdbc:mysql://campus.gbdev.cn:3306/poemdb?useUnicode=true&amp;characterEncoding=UTF-8" />
+        <property name="jdbcUrl" value="jdbc:mysql://campus.gbdev.cn:3306/poemdb?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;failOverReadOnly=false" />
         <!-- 用户名 -->
         <property name="user" value="mydb" />
         <!-- 密码 -->
@@ -35,6 +35,10 @@
         <property name="minPoolSize" value="5"></property>
         <!-- 连接池中连接最大个数 -->
         <property name="maxPoolSize" value="20"></property>
+        <property name="idleConnectionTestPeriod" value="60"></property>
+        <property name="maxIdleTime" value="60"></property>
+
+
     </bean>
 
     <!--3 会话工厂bean sqlSessionFactoryBean -->

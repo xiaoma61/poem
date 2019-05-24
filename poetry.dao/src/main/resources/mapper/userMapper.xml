@@ -19,6 +19,8 @@
   <id column="id" jdbcType="VARCHAR" property="id" />
   <result column="gold_coin_num" jdbcType="INTEGER" property="goldCoinNum" />
   <result column="game_winning_nums" jdbcType="BIGINT" property="gameWinningstreak" />
+   <result column="experience_val" jdbcType="INTEGER" property="experienceVal" />
+
  </resultMap>
   <resultMap id="PeopleStatisticsDtoResultMap" type="com.poetry.pojo.Dto.PeopleStatisticsDto">
     <result column="time" jdbcType="INTEGER" property="time" />
@@ -27,7 +29,7 @@
   <sql id="Base_Column_List">
     id, user_name, password, gold_coin_num, experience_val, sex, avata_path
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from user
@@ -134,7 +136,7 @@
 </select>
 
   <select id="getPeopleDetailDto" resultMap="PeopleDetailDtoBaseResultMap">
-     select u.id,max(m.game_winningstreak)as game_winning_nums ,u.gold_coin_num from user u left join match_result m on  u.id=m.winner_id where u.id=#{0}
+     select u.id,IFNULL(max(m.game_winningstreak),0)as game_winning_nums ,u.gold_coin_num,u.experience_val from user u left join match_result m on  u.id=m.winner_id where u.id=#{0}
   </select>
 
   <select id="listPeopleStatisticsDto" resultMap="PeopleStatisticsDtoResultMap" statementType="CALLABLE">
@@ -144,6 +146,12 @@
   <update id="updateUserbyid">
     update user set  gold_coin_num=gold_coin_num +#{1} where id=#{0}
   </update>
+
+  <select id="selectLastReplyUser" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select * from user where user.id in
+    (select commenter_id from (select * from post_comment  where post_id=#{postId,jdbcType=INTEGER} order by  comment_post_time desc limit 1) as  temp)
+  </select>
+
 
 
 </mapper>

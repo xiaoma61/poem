@@ -1,5 +1,6 @@
 package com.poetry.service;
 
+import com.poetry.pojo.Do.userDo;
 import com.poetry.pojo.Dto.PeopleDetailDto;
 import com.poetry.pojo.Dto.PeopleDto;
 import com.poetry.pojo.Dto.PeopleStatisticsDto;
@@ -43,4 +44,10 @@ public interface UserService {
      * @return [id, gold_coin_num]
      */
     int updateUserbyid(String id,int gold_coin_num);
+
+    public userDo findUserById(String id);
+
+    public boolean insertUser(userDo user);
+
+    boolean updateUserInfo(userDo userDo);
 }

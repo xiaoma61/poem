@@ -19,7 +19,18 @@ public interface GroupMapper {
 
     int updateByPrimaryKey(groupDo record);
 
+
     List<groupDo> listGroupDo();
 
     List<GreateGroupsDto> listGreateGroupsDtoByCreator_Id(String Creator_id);
+
+    List<groupDo> selectAffiliationGroups(String userId);
+
+    List<groupDo> selectMyFoundingGroups(String userId);
+
+    List<groupDo> selectByKeyWord(String keyWord);
+
+    int getGroupMemberNum(Integer groupId);
+
+
 }

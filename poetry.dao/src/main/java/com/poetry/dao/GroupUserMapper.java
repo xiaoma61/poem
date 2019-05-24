@@ -1,6 +1,7 @@
 package com.poetry.dao;
 
 import com.poetry.pojo.Do.group_userDo;
+import org.apache.ibatis.annotations.Param;
 
 public interface GroupUserMapper {
     int deleteByPrimaryKey(Integer id);
@@ -14,4 +15,9 @@ public interface GroupUserMapper {
     int updateByPrimaryKeySelective(group_userDo record);
 
     int updateByPrimaryKey(group_userDo record);
+
+    int deleteByUserIdAndGroupId(@Param(value = "groupId")Integer groupId, @Param(value = "userId") String userId);
+
+    group_userDo selectByUserIdAndGroupId(@Param(value = "groupId")Integer groupId,@Param(value = "userId") String userId);
+
 }

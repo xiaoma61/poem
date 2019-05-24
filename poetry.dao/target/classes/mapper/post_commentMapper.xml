@@ -5,12 +5,29 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="comment_post_time" jdbcType="TIMESTAMP" property="commentPostTime" />
     <result column="comment_content" jdbcType="VARCHAR" property="commentContent" />
-    <result column="commenter_id" jdbcType="INTEGER" property="commenterId" />
+    <result column="commenter_id" jdbcType="VARCHAR" property="commenterId" />
     <result column="post_id" jdbcType="INTEGER" property="postId" />
   </resultMap>
+
+  <resultMap id="MyResultMap" type="com.poetry.pojo.Dto.PostCommentDto">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="comment_post_time" jdbcType="TIMESTAMP" property="commentPostTime" />
+    <result column="comment_content" jdbcType="VARCHAR" property="commentContent" />
+    <result column="commenter_id" jdbcType="VARCHAR" property="commenterId" />
+    <result column="post_id" jdbcType="INTEGER" property="postId" />
+    <result column="user_name" jdbcType="VARCHAR" property="commentatorName"/>
+    <result column="avata_path" jdbcType="VARCHAR" property="commentatorAvator"/>
+  </resultMap>
+
+
   <sql id="Base_Column_List">
     id, comment_post_time, comment_content, commenter_id, post_id
   </sql>
+
+  <sql id="My_Result_List">
+    pc.id, comment_post_time, comment_content, commenter_id, post_id ,user_name ,avata_path
+  </sql>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
@@ -21,11 +38,11 @@
     delete from post_comment
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.poetry.pojo.Do.post_commentDo">
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.poetry.pojo.Do.post_commentDo">
     insert into post_comment (id, comment_post_time, comment_content, 
       commenter_id, post_id)
     values (#{id,jdbcType=INTEGER}, #{commentPostTime,jdbcType=TIMESTAMP}, #{commentContent,jdbcType=VARCHAR}, 
-      #{commenterId,jdbcType=INTEGER}, #{postId,jdbcType=INTEGER})
+      #{commenterId,jdbcType=VARCHAR}, #{postId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.poetry.pojo.Do.post_commentDo">
     insert into post_comment
@@ -57,7 +74,7 @@
         #{commentContent,jdbcType=VARCHAR},
       </if>
       <if test="commenterId != null">
-        #{commenterId,jdbcType=INTEGER},
+        #{commenterId,jdbcType=VARCHAR},
       </if>
       <if test="postId != null">
         #{postId,jdbcType=INTEGER},
@@ -74,7 +91,7 @@
         comment_content = #{commentContent,jdbcType=VARCHAR},
       </if>
       <if test="commenterId != null">
-        commenter_id = #{commenterId,jdbcType=INTEGER},
+        commenter_id = #{commenterId,jdbcType=VARCHAR},
       </if>
       <if test="postId != null">
         post_id = #{postId,jdbcType=INTEGER},
@@ -86,8 +103,18 @@
     update post_comment
     set comment_post_time = #{commentPostTime,jdbcType=TIMESTAMP},
       comment_content = #{commentContent,jdbcType=VARCHAR},
-      commenter_id = #{commenterId,jdbcType=INTEGER},
+      commenter_id = #{commenterId,jdbcType=VARCHAR},
       post_id = #{postId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByPostId"  resultMap="MyResultMap" parameterType="java.lang.Integer">
+    select  <include refid="My_Result_List" />
+      from post_comment as pc inner join user as u
+      where post_id= #{postId,jdbcType=INTEGER} and u.id=pc.commenter_id
+  </select>
+
+ <select id="getCommentsNumByPostId" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+   select count(*) from post_comment where post_id=#{postId,jdbcType=INTEGER}
+ </select>
 </mapper>

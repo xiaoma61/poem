@@ -18,6 +18,12 @@ public class groupDo {
 
     private String creatorId;
 
+
+    private int groupMemberNum;
+
+    private boolean isJoined;
+
+
     public Integer getId() {
         return id;
     }
@@ -64,5 +70,22 @@ public class groupDo {
 
     public void setCreatorId(String creatorId) {
         this.creatorId = creatorId;
+    }
+
+
+    public int getGroupMemberNum() {
+        return groupMemberNum;
+    }
+
+    public void setGroupMemberNum(int groupMemberNum) {
+        this.groupMemberNum = groupMemberNum;
+    }
+
+    public boolean isJoined() {
+        return isJoined;
+    }
+
+    public void setJoined(boolean joined) {
+        isJoined = joined;
     }
 }

@@ -43,7 +43,6 @@
           <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-core:2.6.1" />
           <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-api:2.6.1" />
           <element id="library" level="project" name="Maven: org.springframework:spring-test:4.3.18.RELEASE" />
-          <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.8.9" />
           <element id="library" level="project" name="Maven: cglib:cglib:3.2.4" />
           <element id="library" level="project" name="Maven: org.ow2.asm:asm:5.1" />
           <element id="library" level="project" name="Maven: org.apache.ant:ant:1.9.6" />
@@ -72,7 +71,6 @@
           <element id="library" level="project" name="Maven: us.codecraft:webmagic-core:0.5.3" />
           <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpclient:4.3.3" />
           <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpcore:4.3.2" />
-          <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.6" />
           <element id="library" level="project" name="Maven: com.google.guava:guava:15.0" />
           <element id="library" level="project" name="Maven: org.apache.commons:commons-lang3:3.1" />
           <element id="library" level="project" name="Maven: us.codecraft:xsoup:0.3.1" />
@@ -118,6 +116,7 @@
           <element id="library" level="project" name="Maven: org.apache.maven.shared:maven-filtering:1.0-beta-4" />
           <element id="library" level="project" name="Maven: org.sonatype.plexus:plexus-build-api:0.0.4" />
           <element id="library" level="project" name="Maven: org.codehaus.plexus:plexus-interpolation:1.13" />
+          <element id="library" level="project" name="Maven: org.bouncycastle:bcprov-jdk15on:1.58" />
           <element id="library" level="project" name="Maven: com.alibaba:fastjson:1.2.47" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.5.4" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.5.4" />
@@ -129,6 +128,13 @@
           <element id="library" level="project" name="Maven: net.sf.ehcache:ehcache-core:2.5.0" />
           <element id="library" level="project" name="Maven: org.apache.shiro:shiro-quartz:1.2.3" />
           <element id="library" level="project" name="Maven: org.opensymphony.quartz:quartz:1.6.1" />
+          <element id="archive" name="poetry.util-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="poetry.util" />
+          </element>
+          <element id="library" level="project" name="Maven: com.auth0:java-jwt:3.1.0" />
+          <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.10" />
+          <element id="library" level="project" name="Maven: io.jsonwebtoken:jjwt:0.7.0" />
+          <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.8.9" />
         </element>
       </element>
       <element id="directory" name="META-INF">

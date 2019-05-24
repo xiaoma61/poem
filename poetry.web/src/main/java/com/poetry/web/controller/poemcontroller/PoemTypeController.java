@@ -48,8 +48,6 @@ public class PoemTypeController extends BaseController {
     public R getHotType(@RequestParam(name = "start",defaultValue = "0")int start, @RequestParam(name = "rows",defaultValue = "10")int rows){
 
         Set<String> set=poemService.getHotSearch(typeHot);
-
-
         return R.ok(set);
     }
 

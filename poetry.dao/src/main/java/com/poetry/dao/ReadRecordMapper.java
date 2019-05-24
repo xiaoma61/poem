@@ -1,6 +1,7 @@
 package com.poetry.dao;
 
 import com.poetry.pojo.Do.read_recordDo;
+import com.poetry.pojo.Dto.RankInfoDto;
 
 public interface ReadRecordMapper {
     int deleteByPrimaryKey(Integer id);
@@ -30,6 +31,6 @@ public interface ReadRecordMapper {
      */
     int  updateLikeNumsById(int id);
 
-
+    RankInfoDto selectRankInfoById(Integer id);
 
 }

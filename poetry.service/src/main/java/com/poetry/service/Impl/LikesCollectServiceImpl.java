@@ -48,6 +48,7 @@ public class LikesCollectServiceImpl implements LikesCollectService {
             mtype=COLLECTION;
         }
         if (type==1){
+            likesCollectMapper.deleteByUeser_idAndPoem_idAndType(record.getUeserId(),record.getPoemId(),mtype);
             likesCollectMapper.insert(record);
         }else {
             likesCollectMapper.deleteByUeser_idAndPoem_idAndType(record.getUeserId(),record.getPoemId(),mtype);

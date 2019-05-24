@@ -1,6 +1,7 @@
 package com.poetry.service.Impl;
 
 import com.poetry.dao.UserMapper;
+import com.poetry.pojo.Do.userDo;
 import com.poetry.pojo.Dto.PeopleDetailDto;
 import com.poetry.pojo.Dto.PeopleDto;
 import com.poetry.pojo.Dto.PeopleStatisticsDto;
@@ -35,4 +36,26 @@ public class UserServiceImpl implements UserService {
     public int updateUserbyid(String id, int gold_coin_num) {
         return userMapper.updateUserbyid(id, gold_coin_num);
     }
+
+    @Override
+    public userDo findUserById(String id) {
+        return userMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public boolean insertUser(userDo user) {
+        int result=userMapper.insert(user);
+        if (result==1)return true;
+        return false;
+    }
+
+    @Override
+    public boolean updateUserInfo(userDo userDo) {
+        int res=userMapper.updateByPrimaryKeySelective(userDo);
+        if (res==1){
+            return true;
+        }
+        return false;
+    }
+
 }

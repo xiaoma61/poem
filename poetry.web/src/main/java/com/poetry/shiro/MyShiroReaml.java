@@ -1,11 +1,13 @@
 package com.poetry.shiro;
 
-import com.poetry.service.Impl.UserServiceImpl;
+import com.poetry.commom.SerializeUtil;
+
+import com.poetry.dao.redis.RedisUtil;
+import com.poetry.pojo.Do.userDo;
+
 import com.poetry.service.UserService;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.AuthenticationInfo;
-import org.apache.shiro.authc.AuthenticationToken;
-import org.apache.shiro.authc.SimpleAuthenticationInfo;
+import com.poetry.service.WXService;
+import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
@@ -13,11 +15,7 @@ import org.apache.shiro.subject.PrincipalCollection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 
 
@@ -25,10 +23,10 @@ public class MyShiroReaml extends AuthorizingRealm {
 
     @Autowired
     UserService userService;
-
-
-
-
+    @Autowired
+    WXService wxService;
+    @Autowired
+    RedisUtil redisUtil;
 
     /**
      * @description 实现授权
@@ -56,16 +54,40 @@ public class MyShiroReaml extends AuthorizingRealm {
      * @return [authenticationToken]
      */
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
-
-        Object principal = authenticationToken.getPrincipal();
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-        HttpSession session=request.getSession();
-        String name= String.valueOf(principal);
-        String pass=null;
-
-       SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(name, pass, getName());
-
-        return info;
+        String data=(String)authenticationToken.getPrincipal();
+        String temp[]=data.split(",");
+        String openId=temp[0];
+        String sessionKey=temp[1];
+        String iv=temp[2];
+        String encryptedData=temp[3];
+        userDo userDo = null;
+        try {
+            userDo=wxService.decodeUserInfo(encryptedData,sessionKey,iv);
+            userDo.setId(openId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (redisUtil.exists(openId)){
+            //更新缓存
+            redisUtil.remove(openId);
+            redisUtil.set(openId,userDo);
+        }else {
+            userDo user=userService.findUserById(openId);
+            if (user!=null){
+                //更新数据库，并放进缓存
+                userDo.setId(openId);
+                userService.updateUserInfo(userDo);
+                redisUtil.set(openId, SerializeUtil.serialize(userDo));
+            }else {
+                //创建新用户，并放进缓存
+                userDo.setGoldCoinNum(0);
+                userDo.setExperienceVal(0);
+                userService.insertUser(userDo);
+                redisUtil.set(openId,userDo);
+            }
+        }
+        AuthenticationInfo authenticationInfo=new SimpleAuthenticationInfo(openId,"ok",getName());
+        return authenticationInfo;
     }
 
 

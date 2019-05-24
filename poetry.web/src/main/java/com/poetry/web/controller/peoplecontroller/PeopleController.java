@@ -141,7 +141,6 @@ public class PeopleController extends BaseController {
      * @author myl
      * @date 2019/5/14
      * @param request
-     * @param id
      * @return [request, id]
      */
     @RequestMapping(value = "/register",method = RequestMethod.GET)

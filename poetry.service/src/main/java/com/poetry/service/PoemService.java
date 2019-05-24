@@ -18,7 +18,7 @@ public interface PoemService {
 
     List<PoemDto> listPoemDto(String q, String type);
 
-    void recordSearch(String q,String  id);
+    void recordSearch(String q, String id);
 
     /**
      * @description 热门搜索
@@ -47,11 +47,11 @@ public interface PoemService {
      */
     List<PoemTypeDto> getPoemTypeDto(int id);
 
-    void recordType(Integer type_id,String poemType) ;
+    void recordType(Integer type_id, String poemType) ;
 
     PoemLikeCollectionDto getPoemLikeCollectionDto(String user_id, int poem_id);
 
-    List<PoemReadRecordDto> listPoemReadRecordDtoResultMap(int id,String user_id);
+    List<PoemReadRecordDto> listPoemReadRecordDtoResultMap(int id, String user_id);
 
 
 }
