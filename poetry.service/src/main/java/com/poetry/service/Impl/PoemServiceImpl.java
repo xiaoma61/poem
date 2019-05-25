@@ -69,7 +69,10 @@ public class PoemServiceImpl implements PoemService {
     @Override
     public R getRecentSearch(String id) {
         set=new HashSet<>();
-        return getRecent(id);
+        if (getRecent(id)!=null){
+            return getRecent(id);
+        }
+        return R.ok("暂无数据");
 
     }
 

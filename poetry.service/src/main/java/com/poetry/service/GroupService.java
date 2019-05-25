@@ -10,7 +10,8 @@ public interface GroupService {
 
     groupDo selectByPrimaryKey(Integer id);
 
-    List<groupDo> listGroupDo();
+    PageInfo<groupDo> listGroupDo(String userId,int pageNum);
+
     List<GreateGroupsDto> listGreateGroupsDtoByCreator_Id(String Creator_id);
 
      void createGroup(String creatorId, String groupName, String briefIntro, String coverPath);

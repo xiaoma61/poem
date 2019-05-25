@@ -34,11 +34,10 @@ public class PostServiceImpl implements PostService {
         for ( PostDo post:pageInfo.getList()){
             int commentsNum=postCommentMapper.getCommentsNumByPostId(post.getId());
             post.setReliesNum(commentsNum);
-            if (commentsNum>0){
-                userDo user=userMapper.selectLastReplyUser(post.getId());
-                post.setLastReplyUserAvator(user.getAvataPath());
-                post.setLastReplyUser(user.getAvataPath());
-            }
+            userDo user=userMapper.selectByPrimaryKey(post.getPosterId());
+            post.setPoster(user.getUserName());
+            post.setPosterAvatar(user.getAvataPath());
+            post.setPosterId(null);
 
         }
         return pageInfo;

@@ -56,4 +56,12 @@ public class RankInfoDto {
     public void setVideoId(int videoId) {
         this.videoId = videoId;
     }
+
+    public int getPoemId() {
+        return poemId;
+    }
+
+    public void setPoemId(int poemId) {
+        this.poemId = poemId;
+    }
 }

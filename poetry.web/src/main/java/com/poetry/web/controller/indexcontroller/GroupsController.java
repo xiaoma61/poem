@@ -27,6 +27,20 @@ import static com.poetry.commom.constant.Constants.ROW;
 @Controller
 @RequestMapping("index/groups")
 public class GroupsController extends BaseController {
+
+    /**
+     * 获得所有小组
+     */
+    @ResponseBody
+    @RequestMapping("/get/all/{pageNum}")
+    public R getAllGroups(HttpServletRequest request, @PathVariable int pageNum){
+        String userId= (String) request.getAttribute("id");
+        PageInfo<groupDo> result=groupService.listGroupDo(userId,pageNum);
+        return R.ok(result);
+    }
+
+
+
     /**
      * 获得加入的小组列表
      * @return
@@ -87,15 +101,6 @@ public class GroupsController extends BaseController {
         return R.ok(result);
     }
 
-    /**
-     * 帖子详情
-     */
-    @ResponseBody
-    @RequestMapping(value = "/get/{groupId}/posts/{postId}",method=RequestMethod.GET)
-    public R postsDetail(@PathVariable int postId, @PathVariable String groupId){
-        PostDo res =postService.getPostByPostId(postId);
-        return R.ok(res);
-    }
 
     /**
      * 小组帖子列表

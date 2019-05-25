@@ -19,9 +19,9 @@ public class PostDo {
 
     private int groupId;
 
-    private String lastReplyUser;
+    private String poster;
 
-    private String lastReplyUserAvator;
+    private String posterAvatar;
 
     private int ReliesNum;
 
@@ -73,20 +73,20 @@ public class PostDo {
         this.content = content == null ? null : content.trim();
     }
 
-    public String getLastReplyUser() {
-        return lastReplyUser;
+    public String getPoster() {
+        return poster;
     }
 
-    public void setLastReplyUser(String lastReplyUser) {
-        this.lastReplyUser = lastReplyUser;
+    public void setPoster(String poster) {
+        this.poster = poster;
     }
 
-    public String getLastReplyUserAvator() {
-        return lastReplyUserAvator;
+    public String getPosterAvatar() {
+        return posterAvatar;
     }
 
-    public void setLastReplyUserAvator(String lastReplyUserAvator) {
-        this.lastReplyUserAvator = lastReplyUserAvator;
+    public void setPosterAvatar(String posterAvatar) {
+        this.posterAvatar = posterAvatar;
     }
 
     public int getReliesNum() {
