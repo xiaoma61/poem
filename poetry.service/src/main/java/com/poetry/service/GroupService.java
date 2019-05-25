@@ -9,7 +9,7 @@ public interface GroupService {
 
     groupDo selectByPrimaryKey(Integer id);
 
-    List<groupDo> listGroupDo();
+    PageInfo<groupDo> listGroupDo(String userId,int pageNum);
 
      void createGroup(String creatorId, String groupName, String briefIntro,String coverPath);
 
@@ -20,6 +20,7 @@ public interface GroupService {
     PageInfo<groupDo> getMyFoundingGroups(String userId,int pageNum,int pageSize);
 
     boolean DropOutGroup(String userId,int groupId);
+
 
 
 }

@@ -33,8 +33,18 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public List<groupDo> listGroupDo() {
-        return groupMapper.listGroupDo();
+    public PageInfo<groupDo> listGroupDo(String userId,int pageNum) {
+        PageHelper.startPage(pageNum,PAGE_SIZE);
+        PageInfo<groupDo> pageInfo=new PageInfo<>(groupMapper.listGroupDo());
+        for (groupDo groupDo:pageInfo.getList()){
+            groupDo.setGroupMemberNum(groupMapper.getGroupMemberNum(groupDo.getId()));
+            if (groupUserMapper.selectByUserIdAndGroupId(groupDo.getId(),userId)!=null){
+                groupDo.setJoined(true);
+            }else {
+                groupDo.setJoined(false);
+            }
+        }
+        return pageInfo;
     }
 
     @Override
@@ -50,14 +60,15 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     public PageInfo<groupDo> searchByKeyValue(String keyVal,String userId,int pageNum) {
-        System.out.println("key::"+keyVal);
         PageHelper.startPage(pageNum,PAGE_SIZE);
         PageInfo<groupDo> pageInfo=new PageInfo<>(groupMapper.selectByKeyWord("%"+keyVal+"%"));
         for (groupDo groupDo:pageInfo.getList()){
             if (groupUserMapper.selectByUserIdAndGroupId(groupDo.getId(),userId)!=null){
                 groupDo.setJoined(true);
+            }else {
+                groupDo.setJoined(false);
             }
-            groupDo.setJoined(false);
+
         }
         return pageInfo;
     }

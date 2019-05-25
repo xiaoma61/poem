@@ -24,6 +24,7 @@ public class RankServiceImp implements RankService {
     ReadRecordMapper readRecordMapper;
 
 
+
     @Override
     public List<RankInfoDto> getOneDayRankings() {
         List<RankInfoDto> rankList=new ArrayList<>();

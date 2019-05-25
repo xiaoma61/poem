@@ -19,6 +19,17 @@ import java.util.Date;
 @Controller
 @RequestMapping("index/groups")
 public class GroupsController extends BaseController {
+
+    /**
+     * 获得所有小组
+     */
+    @ResponseBody
+    @RequestMapping("/get/all/{pageNum}")
+    public R getAllGroups(HttpServletRequest request, @PathVariable int pageNum){
+        String userId= (String) request.getAttribute("id");
+        PageInfo<groupDo> result=groupService.listGroupDo(userId,pageNum);
+        return R.ok(result);
+    }
     /**
      * 获得加入的小组列表
      * @return

@@ -110,7 +110,7 @@
   </update>
 
   <select id="listGroupDo" resultMap="BaseResultMap" parameterType="java.lang.String">
-    select * from groups order by create_time desc
+    select <include refid="Column_List_Without_userId" /> from groups order by create_time desc
   </select>
 
   <select id="selectAffiliationGroups" resultMap="BaseResultMap" parameterType="java.lang.String">
