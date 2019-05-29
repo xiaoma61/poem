@@ -2,6 +2,7 @@ package com.poetry.dao;
 
 import com.poetry.pojo.Do.groupDo;
 import com.poetry.pojo.Dto.GreateGroupsDto;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -31,6 +32,8 @@ public interface GroupMapper {
     List<groupDo> selectByKeyWord(String keyWord);
 
     int getGroupMemberNum(Integer groupId);
+
+    groupDo selectByUserIdAndGroupId(@Param("groupId") int groupId, @Param("userId") String userId);
 
 
 }

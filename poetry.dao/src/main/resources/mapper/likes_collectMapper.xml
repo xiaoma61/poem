@@ -3,7 +3,7 @@
 <mapper namespace="com.poetry.dao.LikesCollectMapper">
   <resultMap id="BaseResultMap" type="com.poetry.pojo.Do.likes_collectDo">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="type" jdbcType="CHAR" property="type" />
+    <result column="mtype" jdbcType="CHAR" property="type" />
     <result column="ueser_id" jdbcType="INTEGER" property="ueserId" />
     <result column="poem_id" jdbcType="INTEGER" property="poemId" />
   </resultMap>
@@ -19,7 +19,7 @@
 
 
   <sql id="Base_Column_List">
-    id, type, ueser_id, poem_id
+    id, mtype, ueser_id, poem_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -34,7 +34,7 @@
 
 
   <insert id="insert" parameterType="com.poetry.pojo.Do.likes_collectDo">
-    insert into likes_collect (id, type, ueser_id, 
+    insert into likes_collect (id, mtype, ueser_id,
       poem_id)
     values (#{id,jdbcType=INTEGER}, #{type,jdbcType=CHAR}, #{ueserId,jdbcType=INTEGER}, 
       #{poemId,jdbcType=INTEGER})
@@ -47,7 +47,7 @@
         id,
       </if>
       <if test="type != null">
-        type,
+        mtype,
       </if>
       <if test="ueserId != null">
         ueser_id,
@@ -75,7 +75,7 @@
     update likes_collect
     <set>
       <if test="type != null">
-        type = #{type,jdbcType=CHAR},
+        mtype = #{type,jdbcType=CHAR},
       </if>
       <if test="ueserId != null">
         ueser_id = #{ueserId,jdbcType=INTEGER},
@@ -88,19 +88,19 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.poetry.pojo.Do.likes_collectDo">
     update likes_collect
-    set type = #{type,jdbcType=CHAR},
+    set mtype = #{type,jdbcType=CHAR},
       ueser_id = #{ueserId,jdbcType=INTEGER},
       poem_id = #{poemId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 
   <select id="listLikes_CollectionDto" resultMap="Likes_CollectionDtoBaseResultMap" resultType="String">
-    select lc.poem_id ,lc.id, p.dynasty,p.author,p.poemcol  from likes_collect lc inner join poem p on lc.poem_id =p.id where lc.ueser_id=#{0} and lc.type=#{1}  group by  lc.poem_id
+    select lc.poem_id ,lc.id, p.dynasty,p.author,p.poemcol  from likes_collect lc inner join poem p on lc.poem_id =p.id where lc.ueser_id=#{0} and lc.mtype=#{1}  group by  lc.poem_id
   </select>
 
   <delete id="deleteByUeser_idAndPoem_idAndType" >
     delete from likes_collect
-    where ueser_id = #{0} and poem_id=#{1} and type=#{2}
+    where ueser_id = #{0} and poem_id=#{1} and mtype=#{2}
   </delete>
 
 </mapper>

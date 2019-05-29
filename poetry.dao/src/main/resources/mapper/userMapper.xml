@@ -39,7 +39,7 @@
     delete from user
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.poetry.pojo.Do.userDo">
+  <insert id="insert" parameterType="com.poetry.pojo.Do.userDo" >
     insert into user (id, user_name, password, 
       gold_coin_num, experience_val, sex, 
       avata_path)

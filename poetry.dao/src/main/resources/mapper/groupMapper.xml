@@ -141,4 +141,11 @@
   <select id="getGroupMemberNum" parameterType="java.lang.Integer" resultType="java.lang.Integer">
     select count(*) from groups where id=#{groupId,jdbcType=INTEGER}
   </select>
+
+
+  <select id="selectByUserIdAndGroupId" resultMap="BaseResultMap">
+    select * from groups where groups.creator_id=#{userId,jdbcType=VARCHAR}
+                          and id=#{groupId,jdbcType=INTEGER}
+  </select>
+
 </mapper>

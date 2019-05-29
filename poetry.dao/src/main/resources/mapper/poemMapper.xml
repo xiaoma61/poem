@@ -46,7 +46,7 @@
   </resultMap>
 
   <resultMap id="LikesCollectionDtoResultMap" type="com.poetry.pojo.Dto.LikeCollectionDto">
-    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="mtype" jdbcType="VARCHAR" property="type" />
   </resultMap>
 
 
@@ -193,7 +193,7 @@ SELECT p.id,p.dynasty,p.author,p.poem_content,p.poemcol,COUNT(DISTINCT rr.id) as
 ,COUNT(DISTINCT rrc.id) as readCommentNum
 FROM
 poem as p  LEFT JOIN read_record as rr on  p.id=rr.poem_id
-LEFT JOIN likes_collect as lc on p.id=lc.poem_id and lc.type=#{1}
+LEFT JOIN likes_collect as lc on p.id=lc.poem_id and lc.mtype=#{1}
 LEFT JOIN read_record_comment rrc ON rrc.read_record_id=rr.id
 WHERE p.author LIKE CONCAT('%',#{0},'%')  GROUP BY p.id
 
@@ -205,7 +205,7 @@ SELECT p.id,p.dynasty,p.author,p.poem_content,p.poemcol,COUNT(DISTINCT rr.id) as
 ,COUNT(DISTINCT rrc.id) as readCommentNum
 FROM
 poem as p  LEFT JOIN read_record as rr on  p.id=rr.poem_id
-LEFT JOIN likes_collect as lc on p.id=lc.poem_id and lc.type=#{1}
+LEFT JOIN likes_collect as lc on p.id=lc.poem_id and lc.mtype=#{1}
 LEFT JOIN read_record_comment rrc ON rrc.read_record_id=rr.id
 WHERE p.poem_content LIKE concat('%',#{0},'%')   GROUP BY p.id
 
@@ -218,7 +218,7 @@ SELECT p.id,p.dynasty,p.author,p.poem_content,p.poemcol,COUNT(DISTINCT rr.id) as
 ,COUNT(DISTINCT rrc.id) as readCommentNum
 FROM
 poem as p  LEFT JOIN read_record as rr on  p.id=rr.poem_id
-LEFT JOIN likes_collect as lc on p.id=lc.poem_id and lc.type=#{1}
+LEFT JOIN likes_collect as lc on p.id=lc.poem_id and lc.mtype=#{1}
 LEFT JOIN read_record_comment rrc ON rrc.read_record_id=rr.id
 WHERE p.poemcol LIKE concat('%',#{0},'%')   GROUP BY p.id
 
@@ -234,7 +234,7 @@ WHERE p.poemcol LIKE concat('%',#{0},'%')   GROUP BY p.id
 ,pt.id as poem_type_id
 FROM
 poem as p  LEFT JOIN read_record as rr on  p.id=rr.poem_id
-LEFT JOIN likes_collect as lc on p.id=lc.poem_id and lc.type="点赞"
+LEFT JOIN likes_collect as lc on p.id=lc.poem_id and lc.mtype="点赞"
 LEFT JOIN read_record_comment rrc ON rrc.read_record_id=rr.id
 LEFT JOIN  poem_poem_type ptt on p.id=ptt.poem_id
 LEFT JOIN poem_type pt ON pt.id=ptt.poem_type_id
@@ -248,23 +248,23 @@ WHERE pt.id=#{0}  GROUP BY p.id
 <select id="getPoemLikeCollectionDto" resultMap="PoemLikeCollectionDtoResultMap">
 
 
-SELECT lc.pid as id,lc.author,lc.dynasty,lc.poemcol,lc.poem_appreciation,lc.poem_content,lc.poem_translation, p.type ,lc.c as typeNum ,lc.type as typeNumName
+SELECT lc.pid as id,lc.author,lc.dynasty,lc.poemcol,lc.poem_appreciation,lc.poem_content,lc.poem_translation, p.mtype ,lc.c as typeNum ,lc.mtype as typeNumName
 FROM(
-SELECT p.id as pid ,p.author,p.dynasty,p.poemcol,p.poem_appreciation,p.poem_content,p.poem_translation,COUNT(likes_collect.type)as c , likes_collect.type ,likes_collect.poem_id as lcpoem_id
+SELECT p.id as pid ,p.author,p.dynasty,p.poemcol,p.poem_appreciation,p.poem_content,p.poem_translation,COUNT(likes_collect.mtype)as c , likes_collect.mtype ,likes_collect.poem_id as lcpoem_id
 FROM poem p
 LEFT JOIN likes_collect
 on   likes_collect.poem_id=p.id
 WHERE  p.id=#{1}
-GROUP BY likes_collect.type
+GROUP BY likes_collect.mtype
 
 )lc LEFT  JOIN  (
 
-SELECT likes_collect.poem_id as id, likes_collect.type as type,likes_collect.id as likes_collect_id
+SELECT likes_collect.poem_id as id, likes_collect.mtype as mtype,likes_collect.id as likes_collect_id
 FROM
  likes_collect
 WHERE    likes_collect.ueser_id=#{0}
-)p on p.id=lc.pid AND p.type=lc.type
-GROUP BY lc.type
+)p on p.id=lc.pid AND p.mtype=lc.mtype
+GROUP BY lc.mtype
 
 </select>
 

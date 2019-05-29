@@ -4,6 +4,7 @@ import com.poetry.commom.SerializeUtil;
 import com.poetry.dao.ReadRecordMapper;
 import com.poetry.dao.UserMapper;
 import com.poetry.dao.redis.RedisUtil;
+
 import com.poetry.pojo.Dto.RankInfoDto;
 import com.poetry.service.RankService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,18 +39,30 @@ public class RankServiceImp implements RankService {
         return rankList;
     }
 
+
     @Override
     public List<RankInfoDto> getOneWeekRankings() {
         List<String> weekKeys=getWeekString();
-        String key="weekRank";
-        redisUtil.unionAndStore(weekKeys,key);
-        Set<Integer> result=redisUtil.revRange("weekRank",RANK_MEMEBER_FIRST,RANK_MEMEBER_LAST);
+        Set<Integer> result;
+        String key;
+        if(weekKeys.size()==0){
+            return null;
+        }else if (weekKeys.size()==1){
+            result=redisUtil.revRange(weekKeys.get(0),RANK_MEMEBER_FIRST,RANK_MEMEBER_LAST);
+            key=weekKeys.get(0);
+        }else {
+            key="weekRank";
+            redisUtil.unionAndStore(weekKeys,key);
+            result=redisUtil.revRange("weekRank",RANK_MEMEBER_FIRST,RANK_MEMEBER_LAST);
+        }
         List<RankInfoDto> weekRankList=new ArrayList<>();
         for (int videoId:result){
             setRankInfo(videoId,weekRankList,key);
         }
         return weekRankList;
     }
+
+
 
     @Override
     public boolean addLike(int videoId) {
@@ -58,6 +71,8 @@ public class RankServiceImp implements RankService {
         if (res)return true;
         return false;
     }
+
+
 
     @Override
     public boolean addComment(int videoId) {

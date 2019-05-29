@@ -263,7 +263,15 @@ public class RedisUtil {
      */
     public static double score(String key,int value){
         if (exists(key)){
-            return redisTemplateForzSet.opsForZSet().score(key, value);
+            if (null!=redisTemplateForzSet.opsForZSet().score(key, value)){
+                return redisTemplateForzSet.opsForZSet().score(key, value);
+
+            }else {
+
+                return 0;
+            }
+
+
         }else {
             return 0;
         }

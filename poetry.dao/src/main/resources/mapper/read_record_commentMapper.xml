@@ -34,7 +34,12 @@
     delete from read_record_comment
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.poetry.pojo.Do.read_record_commentDo">
+  <insert id="insert" parameterType="com.poetry.pojo.Do.read_record_commentDo" >
+
+    <selectKey resultType="Integer" order="AFTER" keyProperty="id">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+
     insert into read_record_comment (id, comment_content, time, 
       ueser_id, read_record_id)
     values (#{id,jdbcType=INTEGER}, #{commentContent,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}, 

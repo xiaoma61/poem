@@ -72,7 +72,7 @@ public class PoemController extends BaseController {
         readRecordCommentDo.setTime(new Date());
         readRecordCommentDo.setUeserId(getOpenId(request));
         readRecordCommentService.insert(readRecordCommentDo);
-
+        rankService.addComment(readRecordCommentDo.getId());
         return R.ok();
     }
 
@@ -141,7 +141,11 @@ public class PoemController extends BaseController {
     @RequestMapping(value = "/{id}/video/{videoId}/like",method = RequestMethod.GET)
     @ResponseBody
     public R postPoemVideoLike(@PathVariable("id")int id,@PathVariable("videoId")int videoId, @RequestParam("type")int type,HttpServletRequest request){
-        rankService.addLike(videoId);
+
+        if(type==1){
+            rankService.addLike(videoId);
+        }
+
         readRecordService.setLike(videoId,getOpenId(request),type);
         return R.ok();
     }
@@ -161,7 +165,7 @@ public class PoemController extends BaseController {
 
     public R postPoemVideoComment(@PathVariable("id")int id,@PathVariable("videoId")int videoId, @RequestParam(name = "start",defaultValue = "0")int start, @RequestParam(name = "rows",defaultValue = "10")int rows){
 
-        rankService.addComment(videoId);
+
         video_id=videoId;
         return R.ok(getPageInfo(start,rows,2));
     }

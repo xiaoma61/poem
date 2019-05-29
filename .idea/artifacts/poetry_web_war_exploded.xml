@@ -120,7 +120,6 @@
           <element id="library" level="project" name="Maven: com.alibaba:fastjson:1.2.47" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.5.4" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.5.4" />
-          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.5.4" />
           <element id="library" level="project" name="Maven: org.apache.shiro:shiro-cas:1.2.3" />
           <element id="library" level="project" name="Maven: org.jasig.cas.client:cas-client-core:3.2.1" />
           <element id="library" level="project" name="Maven: org.apache.shiro:shiro-web:1.2.3" />
@@ -135,6 +134,7 @@
           <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.10" />
           <element id="library" level="project" name="Maven: io.jsonwebtoken:jjwt:0.7.0" />
           <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.8.9" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.5.4" />
         </element>
       </element>
       <element id="directory" name="META-INF">
