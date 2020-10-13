@@ -20,7 +20,7 @@
     <properties>
       <!--通用部分-->
       <log4j.version>2.6.1</log4j.version>
-      <junit.version>4.12</junit.version>
+      <junit.version>4.13.1</junit.version>
       <spring-test.version>4.3.18.RELEASE</spring-test.version>
 
       <!--Spring-->
