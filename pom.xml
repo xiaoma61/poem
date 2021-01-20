@@ -44,7 +44,7 @@
       <freemarker.version>2.3.23</freemarker.version>
       <jsonObject.version>2.4</jsonObject.version>
 
-      <jackson.version>2.5.4</jackson.version>
+      <jackson.version>2.12.1</jackson.version>
 
 
     </properties>
